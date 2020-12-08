@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BabychameleonApplication {
+public class BabyChameleonApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BabychameleonApplication.class, args);
+		SpringApplication.run(BabyChameleonApplication.class, args);
 	}
 
 }
