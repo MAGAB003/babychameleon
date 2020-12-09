@@ -15,4 +15,9 @@ public class BabyChameleonController {
     public String aboutservice() {
         return "aboutservice";
     }
+
+    @GetMapping("/subscriptions")
+    public String subscriptions() {
+        return "subscriptions";
+    }
 }
