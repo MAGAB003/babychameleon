@@ -1,16 +1,16 @@
 package com.example.babychameleon;
 
 public class Subscription {
-   private String subscriptionID;
-    private String name;
-    private String description;
-    private Integer imgID;
+    private String subscriptionID;
+    private String subscriptionName;
+    private String subscriptionDescription;
+    private String imgID;
     private AgeGroup ageGroup;
     private String theme;
 
-    public Subscription(String name, String description, Integer imgID, AgeGroup ageGroup, String theme){
-    this.name=name;
-    this.description=description;
+    public Subscription(String subscriptionName, String subscriptionDescription, String imgID, AgeGroup ageGroup, String theme){
+    this.subscriptionName =subscriptionName;
+    this.subscriptionDescription=subscriptionDescription;
     this.imgID=imgID;
     this.ageGroup=ageGroup;
     this.theme=theme;
@@ -24,27 +24,27 @@ public class Subscription {
         this.subscriptionID = subscriptionID;
     }
 
-    public String getName() {
-        return name;
+    public String getSubscriptionName() {
+        return subscriptionName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSubscriptionName(String subscriptionName) {
+        this.subscriptionName = subscriptionName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSubscriptionDescription() {
+        return subscriptionDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSubscriptionDescription(String subscriptionDescription) {
+        this.subscriptionDescription = subscriptionDescription;
     }
 
-    public Integer getImgID() {
+    public String getImgID() {
         return imgID;
     }
 
-    public void setImgID(Integer imgID) {
+    public void setImgID(String imgID) {
         this.imgID = imgID;
     }
 
