@@ -1,5 +1,7 @@
 package com.example.babychameleon;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Customer {
 
     private String customerID;
@@ -9,10 +11,35 @@ public class Customer {
     private String customerEmail;
     private String address;
     private int postalCode;
-    private int city;
+    private String city;
     private int creditCardNumber;
     private String creditCardExpirationDate;
     private int cvvCode;
+    private AtomicInteger idCounter=new AtomicInteger();
+
+    public Customer(String customerFirstName, String customerLastName, String customerEmail, String address, int postalCode,String city){
+    this.customerNumber=createCustomerNumber();
+    this.customerFirstName=customerFirstName;
+    this.customerLastName=customerLastName;
+    this.customerEmail=customerEmail;
+    this.address=address;
+    this.postalCode= postalCode;
+    this.city=city;
+    }
+
+    public Customer(String customerFirstName, String customerLastName, String customerEmail, String address, int postalCode,String city, int creditCardNumber, String creditCardExpirationDate, int cvvCode){
+    this(customerFirstName,customerLastName,customerEmail,address,postalCode,city);
+    this.creditCardNumber=creditCardNumber;
+    this.creditCardExpirationDate=creditCardExpirationDate;
+    this.cvvCode=cvvCode;
+    }
+
+    private int createCustomerNumber() {
+
+        return Integer.valueOf(idCounter.incrementAndGet());
+    }
+
+
 
     public String getCustomerID() {
         return customerID;
@@ -70,11 +97,11 @@ public class Customer {
         this.postalCode = postalCode;
     }
 
-    public int getCity() {
+    public String getCity() {
         return city;
     }
 
-    public void setCity(int city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
