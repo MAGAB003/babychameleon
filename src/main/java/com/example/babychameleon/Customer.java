@@ -8,8 +8,7 @@ public class Customer {
     private String customerFirstName;
     private String customerLastName;
     private String customerEmail;
-    private String customerPassword;
-    private String customerStreetAdress;
+    private String customerStreetAddress;
     private int postalCode;
     private String city;
     private int creditCardNumber;
@@ -17,19 +16,18 @@ public class Customer {
     private int cvvCode;
     private AtomicInteger idCounter=new AtomicInteger();
 
-    public Customer(String customerFirstName, String customerLastName, String customerEmail, String customerPassword, String customerStreetAdress, int postalCode,String city){
+    public Customer(String customerFirstName, String customerLastName, String customerEmail, String customerStreetAddress, int postalCode,String city){
     this.customerNumber=createCustomerNumber();
     this.customerFirstName=customerFirstName;
     this.customerLastName=customerLastName;
     this.customerEmail=customerEmail;
-    this.customerPassword=customerPassword;
-    this.customerStreetAdress=customerStreetAdress;
+    this.customerStreetAddress=customerStreetAddress;
     this.postalCode= postalCode;
     this.city=city;
     }
 
-    public Customer(String customerFirstName, String customerLastName, String customerEmail, String customerPassword, String customerStreetAdress, int postalCode,String city, int creditCardNumber, String creditCardExpirationDate, int cvvCode){
-    this(customerFirstName,customerLastName,customerEmail, customerPassword, customerStreetAdress,postalCode,city);
+    public Customer(String customerFirstName, String customerLastName, String customerEmail, String customerStreetAddress, int postalCode,String city, int creditCardNumber, String creditCardExpirationDate, int cvvCode){
+    this(customerFirstName,customerLastName,customerEmail, customerStreetAddress,postalCode,city);
     this.creditCardNumber=creditCardNumber;
     this.creditCardExpirationDate=creditCardExpirationDate;
     this.cvvCode=cvvCode;
@@ -80,20 +78,12 @@ public class Customer {
         this.customerEmail = customerEmail;
     }
 
-    public String getCustomerPassword() {
-        return customerPassword;
+    public String getcustomerStreetAddress() {
+        return customerStreetAddress;
     }
 
-    public void setCustomerPassword(String customerPassword) {
-        this.customerPassword = customerPassword;
-    }
-
-    public String getcustomerStreetAdress() {
-        return customerStreetAdress;
-    }
-
-    public void setAddress(String customerStreetAdress) {
-        this.customerStreetAdress = customerStreetAdress;
+    public void setAddress(String customerStreetAddress) {
+        this.customerStreetAddress = customerStreetAddress;
     }
 
     public int getPostalCode() {
