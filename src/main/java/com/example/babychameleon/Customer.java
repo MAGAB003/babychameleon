@@ -9,7 +9,8 @@ public class Customer {
     private String customerFirstName;
     private String customerLastName;
     private String customerEmail;
-    private String address;
+    private String customerPassword;
+    private String customerStreetAdress;
     private int postalCode;
     private String city;
     private int creditCardNumber;
@@ -17,18 +18,19 @@ public class Customer {
     private int cvvCode;
     private AtomicInteger idCounter=new AtomicInteger();
 
-    public Customer(String customerFirstName, String customerLastName, String customerEmail, String address, int postalCode,String city){
+    public Customer(String customerFirstName, String customerLastName, String customerEmail, String customerPassword, String customerStreetAdress, int postalCode,String city){
     this.customerNumber=createCustomerNumber();
     this.customerFirstName=customerFirstName;
     this.customerLastName=customerLastName;
     this.customerEmail=customerEmail;
-    this.address=address;
+    this.customerPassword=customerPassword;
+    this.customerStreetAdress=customerStreetAdress;
     this.postalCode= postalCode;
     this.city=city;
     }
 
-    public Customer(String customerFirstName, String customerLastName, String customerEmail, String address, int postalCode,String city, int creditCardNumber, String creditCardExpirationDate, int cvvCode){
-    this(customerFirstName,customerLastName,customerEmail,address,postalCode,city);
+    public Customer(String customerFirstName, String customerLastName, String customerEmail, String customerPassword, String customerStreetAdress, int postalCode,String city, int creditCardNumber, String creditCardExpirationDate, int cvvCode){
+    this(customerFirstName,customerLastName,customerEmail, customerPassword, customerStreetAdress,postalCode,city);
     this.creditCardNumber=creditCardNumber;
     this.creditCardExpirationDate=creditCardExpirationDate;
     this.cvvCode=cvvCode;
@@ -38,7 +40,6 @@ public class Customer {
 
         return Integer.valueOf(idCounter.incrementAndGet());
     }
-
 
 
     public String getCustomerID() {
@@ -81,12 +82,20 @@ public class Customer {
         this.customerEmail = customerEmail;
     }
 
-    public String getAddress() {
-        return address;
+    public String getCustomerPassword() {
+        return customerPassword;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setCustomerPassword(String customerPassword) {
+        this.customerPassword = customerPassword;
+    }
+
+    public String getcustomerStreetAdress() {
+        return customerStreetAdress;
+    }
+
+    public void setAddress(String customerStreetAdress) {
+        this.customerStreetAdress = customerStreetAdress;
     }
 
     public int getPostalCode() {
