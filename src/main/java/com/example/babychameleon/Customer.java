@@ -1,5 +1,4 @@
 package com.example.babychameleon;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Customer {
@@ -37,7 +36,6 @@ public class Customer {
     }
 
     private int createCustomerNumber() {
-
         return Integer.valueOf(idCounter.incrementAndGet());
     }
 
