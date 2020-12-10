@@ -1,7 +1,7 @@
 package com.example.babychameleon;
 
 public class Subscription {
-    private String subscriptionID;
+    private String ID;
     private String subscriptionName;
     private String subscriptionDescription;
     private String imgID;
@@ -16,12 +16,12 @@ public class Subscription {
     this.theme=theme;
     }
 
-    public String getSubscriptionID() {
-        return subscriptionID;
+    public String getID() {
+        return ID;
     }
 
-    public void setSubscriptionID(String subscriptionID) {
-        this.subscriptionID = subscriptionID;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getSubscriptionName() {
