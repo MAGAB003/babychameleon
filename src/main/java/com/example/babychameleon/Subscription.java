@@ -1,58 +1,71 @@
 package com.example.babychameleon;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+
+import javax.persistence.*;
+
+@Entity
 public class Subscription {
-   private String subscriptionID;
-    private String name;
-    private String description;
-    private Integer imgID;
-    private AgeGroup ageGroup;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String ID;
+    @Column(name="Subscription_Name")
+    private String subscriptionName;
+    @Column(name="Subscription_Description")
+    private String subscriptionDescription;
+    private String imgID;
+    @Column(name="Age_Group")
+    private String ageGroup;
     private String theme;
 
-    public Subscription(String name, String description, Integer imgID, AgeGroup ageGroup, String theme){
-    this.name=name;
-    this.description=description;
+    public Subscription(){
+    }
+
+    public Subscription(String subscriptionName, String subscriptionDescription, String imgID, String ageGroup, String theme){
+    this.subscriptionName =subscriptionName;
+    this.subscriptionDescription=subscriptionDescription;
     this.imgID=imgID;
     this.ageGroup=ageGroup;
     this.theme=theme;
     }
 
-    public String getSubscriptionID() {
-        return subscriptionID;
+    public String getID() {
+        return ID;
     }
 
-    public void setSubscriptionID(String subscriptionID) {
-        this.subscriptionID = subscriptionID;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
-    public String getName() {
-        return name;
+    public String getSubscriptionName() {
+        return subscriptionName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSubscriptionName(String subscriptionName) {
+        this.subscriptionName = subscriptionName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getSubscriptionDescription() {
+        return subscriptionDescription;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setSubscriptionDescription(String subscriptionDescription) {
+        this.subscriptionDescription = subscriptionDescription;
     }
 
-    public Integer getImgID() {
+    public String getImgID() {
         return imgID;
     }
 
-    public void setImgID(Integer imgID) {
+    public void setImgID(String imgID) {
         this.imgID = imgID;
     }
 
-    public AgeGroup getAgeGroup() {
+    public String getAgeGroup() {
         return ageGroup;
     }
 
-    public void setAgeGroup(AgeGroup ageGroup) {
+    public void setAgeGroup(String ageGroup) {
         this.ageGroup = ageGroup;
     }
 

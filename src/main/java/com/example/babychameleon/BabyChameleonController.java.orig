@@ -50,18 +50,24 @@ public class BabyChameleonController {
             model.addAttribute("subscription", subscription);
         return "subscriptionDetails";
     }*/
+<<<<<<< HEAD
 
     @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-@GetMapping("/h2test")
+    public String login() { return "login"; }
+
+
+
+    @GetMapping("/h2test")
     public String h2test(Model model) {
         List<Subscription> newSubscription = (List<Subscription>)subscriptionRepository.findAll();
         model.addAttribute("subscriptions", newSubscription);
         return "h2test"; }
 
+ @GetMapping("/test")
+=======
+    
     @GetMapping("/test")
+>>>>>>> bd0d549b12ed7d7f0c835152b653dd4d5fdbddf4
     public String tst() {
         return "test";
     }

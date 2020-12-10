@@ -3,7 +3,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Customer {
 
-    private String customerID;
+    private String ID;
     private int customerNumber;
     private String customerFirstName;
     private String customerLastName;
@@ -38,12 +38,12 @@ public class Customer {
     }
 
 
-    public String getCustomerID() {
-        return customerID;
+    public String getID() {
+        return ID;
     }
 
-    public void setCustomerID(String customerID) {
-        this.customerID = customerID;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public int getCustomerNumber() {
@@ -78,7 +78,7 @@ public class Customer {
         this.customerEmail = customerEmail;
     }
 
-    public String getcustomerStreetAddress() {
+    public String getCustomerStreetAddress() {
         return customerStreetAddress;
     }
 

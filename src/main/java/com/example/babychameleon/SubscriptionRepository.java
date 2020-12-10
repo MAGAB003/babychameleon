@@ -1,7 +1,11 @@
 package com.example.babychameleon;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-@Repository
-public class SubscriptionRepository {
+
+
+public interface SubscriptionRepository extends CrudRepository<Subscription, String> {
+
+    Iterable<Subscription> findBySubscriptionName(String subscriptionName);
+
 }
