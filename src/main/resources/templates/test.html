@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <title>Test</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}" href="../static/img/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
+          type="text/css"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link th:href="@{/css/styles.css}" href="../static/css/styles.css" rel="stylesheet"/>
+</head>
+<body>
+<div th:replace="index :: topbar"></div>
+
+<section class="page-section first-section">
+    <div class="container">
+        <h2 class="page-section-heading text-center text-uppercase">Test</h2>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa cumque dicta dolor ducimus eius impedit
+            iusto, libero, minus mollitia nam nesciunt nihil nobis, officia possimus quasi saepe velit veniam
+            voluptatibus.
+        </p>
+    </div>
+</section>
+
+<div th:replace="index :: bottombar"></div>
+<div th:replace="index :: scripts"></div>
+</body>
+</html>

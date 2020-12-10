@@ -20,4 +20,10 @@ public class BabyChameleonController {
     public String subscriptions() {
         return "subscriptions";
     }
+
+    @GetMapping("/test")
+    public String tst() {
+        return "test";
+    }
+
 }
