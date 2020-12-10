@@ -14,9 +14,24 @@
     </tr>
     <tr th:each="subscription : ${subscriptions}">
         <th th:text="${subscription.ID}"></th>
-        <th th:text="${subscription.subscriptionName}"></th>
-        <th th:text="${subscription.subscriptionDescription}"></th>
+        <th th:text="${subscription.name}"></th>
+        <th th:text="${subscription.description}"></th>
         <th th:text="${subscription.theme}"></th>
+    </tr>
+</table>
+
+<table>
+    <tr>
+        <th>Customer Id</th>
+        <th>Customer firstName</th>
+        <th>Customer lastname </th>
+        <th>Customer email</th>
+    </tr>
+    <tr th:each="customer : ${customers}">
+        <th th:text="${customer.ID}"></th>
+        <th th:text="${customer.firstName}"></th>
+        <th th:text="${customer.lastName}"></th>
+        <th th:text="${customer.email}"></th>
     </tr>
 </table>
 </body>
