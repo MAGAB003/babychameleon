@@ -15,6 +15,7 @@ public class Subscription {
     @Column(name="Age_Group")
     private String ageGroup;
     private String theme;
+    private int price;
 
     public Subscription(){
     }
@@ -74,5 +75,11 @@ public class Subscription {
     public void setTheme(String theme) {
         this.theme = theme;
     }
+    public int getPrice() {
+        return price;
+    }
 
+    public void setPrice(int price) {
+        this.price = price;
+    }
 }
