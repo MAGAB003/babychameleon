@@ -10079,6 +10079,9 @@ h3 {
   font-size: 80%;
   padding: 0.8rem;
 }
+#mainNav #logotype {
+  height: 100px;
+}
 
 @media (min-width: 992px) {
   #mainNav {
@@ -10109,6 +10112,9 @@ h3 {
   #mainNav.navbar-shrink .navbar-brand {
     font-size: 1.5em;
   }
+  #mainNav.navbar-shrink #logotype {
+    height: 80px;
+  }
 }
 .masthead {
   padding-top: calc(6rem + 74px);
@@ -10124,6 +10130,9 @@ h3 {
 .masthead .masthead-avatar {
   width: 15rem;
 }
+.first-section {
+  padding-top: calc(6rem + 74px);
+}
 
 @media (min-width: 992px) {
   .masthead {
@@ -10136,6 +10145,9 @@ h3 {
   }
   .masthead .masthead-subheading {
     font-size: 1.5rem;
+  }
+  .first-section {
+    padding-top: calc(6rem + 104px);
   }
 }
 .portfolio .portfolio-item {

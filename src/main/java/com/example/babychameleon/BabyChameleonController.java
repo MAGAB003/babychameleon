@@ -46,5 +46,13 @@ public class BabyChameleonController {
     }*/
 
     @GetMapping("/login")
-    public String login() { return "login"; }
+    public String login() {
+        return "login";
+    }
+
+    @GetMapping("/test")
+    public String tst() {
+        return "test";
+    }
+
 }
