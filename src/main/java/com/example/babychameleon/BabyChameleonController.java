@@ -16,6 +16,8 @@ public class BabyChameleonController {
 
     @Autowired
     private SubscriptionRepository subscriptionRepository;
+    @Autowired
+    private CustomerRepository customerRepository;
 
     @GetMapping
     public String home() {
@@ -52,12 +54,18 @@ public class BabyChameleonController {
     }
 @GetMapping("/h2test")
     public String h2test(Model model) {
-        List<Subscription> newSubscription = (List<Subscription>)subscriptionRepository.findAll();
-        model.addAttribute("subscriptions", newSubscription);
+        List<Subscription> subscriptions = (List<Subscription>)subscriptionRepository.findAll();
+        model.addAttribute("subscriptions", subscriptions);
         return "h2test"; }
 
     @GetMapping("/test")
     public String tst() {
         return "test";
     }
+
+    @GetMapping("/h2testCustomer")
+    public String h2testCustomer(Model model) {
+        List<Customer> customers = (List<Customer>)customerRepository.findAll();
+        model.addAttribute("customers", customers);
+        return "h2test"; }
 }

@@ -1,14 +1,22 @@
 package com.example.babychameleon;
+import javax.persistence.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Entity
 public class Customer {
 
-    private String ID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long ID;
     private int customerNumber;
-    private String customerFirstName;
-    private String customerLastName;
-    private String customerEmail;
-    private String customerStreetAddress;
+    @Column(name="FirstName")
+    private String firstName;
+    @Column(name="LastName")
+    private String lastName;
+    @Column(name="Email")
+    private String email;
+    @Column(name="StreetAddress")
+    private String streetAddress;
     private int postalCode;
     private String city;
     private int creditCardNumber;
@@ -16,18 +24,18 @@ public class Customer {
     private int cvvCode;
     private AtomicInteger idCounter=new AtomicInteger();
 
-    public Customer(String customerFirstName, String customerLastName, String customerEmail, String customerStreetAddress, int postalCode,String city){
+    public Customer(String firstName, String lastName, String email, String streetAddress, int postalCode,String city){
     this.customerNumber=createCustomerNumber();
-    this.customerFirstName=customerFirstName;
-    this.customerLastName=customerLastName;
-    this.customerEmail=customerEmail;
-    this.customerStreetAddress=customerStreetAddress;
+    this.firstName=firstName;
+    this.lastName=lastName;
+    this.email=email;
+    this.streetAddress=streetAddress;
     this.postalCode= postalCode;
     this.city=city;
     }
 
-    public Customer(String customerFirstName, String customerLastName, String customerEmail, String customerStreetAddress, int postalCode,String city, int creditCardNumber, String creditCardExpirationDate, int cvvCode){
-    this(customerFirstName,customerLastName,customerEmail, customerStreetAddress,postalCode,city);
+    public Customer(String firstName, String lastName, String customerEmail, String customerStreetAddress, int postalCode,String city, int creditCardNumber, String creditCardExpirationDate, int cvvCode){
+    this(firstName,lastName,customerEmail, customerStreetAddress,postalCode,city);
     this.creditCardNumber=creditCardNumber;
     this.creditCardExpirationDate=creditCardExpirationDate;
     this.cvvCode=cvvCode;
@@ -38,11 +46,11 @@ public class Customer {
     }
 
 
-    public String getID() {
+    public Long getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(Long ID) {
         this.ID = ID;
     }
 
@@ -54,36 +62,36 @@ public class Customer {
         this.customerNumber = customerNumber;
     }
 
-    public String getCustomerFirstName() {
-        return customerFirstName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setCustomerFirstName(String customerFirstName) {
-        this.customerFirstName = customerFirstName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getCustomerLastName() {
-        return customerLastName;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setCustomerLastName(String customerLastName) {
-        this.customerLastName = customerLastName;
+    public void setLastName(String customerLastName) {
+        this.lastName = lastName;
     }
 
-    public String getCustomerEmail() {
-        return customerEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getCustomerStreetAddress() {
-        return customerStreetAddress;
+    public String getStreetAddress() {
+        return streetAddress;
     }
 
-    public void setAddress(String customerStreetAddress) {
-        this.customerStreetAddress = customerStreetAddress;
+    public void setStreetAddress(String streetAddress) {
+        this.streetAddress = streetAddress;
     }
 
     public int getPostalCode() {

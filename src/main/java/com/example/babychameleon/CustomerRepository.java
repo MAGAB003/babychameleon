@@ -1,9 +1,7 @@
 package com.example.babychameleon;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.CrudRepository;
 
-
-@Repository
-public class CustomerRepository {
+public interface CustomerRepository extends CrudRepository<Customer, String> {
 
 
 }
