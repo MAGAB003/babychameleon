@@ -21,6 +21,11 @@ public class BabyChameleonController {
         return "subscriptions";
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
     @GetMapping("/test")
     public String tst() {
         return "test";
