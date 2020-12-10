@@ -14,3 +14,11 @@
     width: 120px;
     font-size: 22px;
 }
+
+.filterDiv {
+    display: none;
+  }
+  
+  .show {
+    display: block;
+  }
