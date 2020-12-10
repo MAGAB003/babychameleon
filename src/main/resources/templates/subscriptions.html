@@ -46,8 +46,8 @@
                     <!--ADD THIS BELOW WHEN WE HAVE CORRECT IMG IN DB th:src="${subscription.imgID}"-->
                     <a href="#"> <img class="card-img-top" th:src="@{/img/subscriptions/sub_baby.jpg}"> </a>
                     <div class="card-body">
-                        <p class="card-text" th:text="${subscription.subscriptionName}"></p>
-                        <p class="card-text" th:text="${subscription.subscriptionDescription}">
+                        <p class="card-text" th:text="${subscription.name}"></p>
+                        <p class="card-text" th:text="${subscription.description}">
                         </p>
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="subscription_button">
