@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class Subscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String ID;
+    private Long ID;
     private String name;
     private String description;
     private String imgID;
@@ -27,11 +27,11 @@ public class Subscription {
     this.theme=theme;
     }
 
-    public String getID() {
+    public Long getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(Long ID) {
         this.ID = ID;
     }
 

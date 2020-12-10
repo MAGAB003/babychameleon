@@ -7,7 +7,7 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String ID;
+    private Long ID;
     private int customerNumber;
     @Column(name="FirstName")
     private String firstName;
@@ -46,11 +46,11 @@ public class Customer {
     }
 
 
-    public String getID() {
+    public Long getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(Long ID) {
         this.ID = ID;
     }
 
