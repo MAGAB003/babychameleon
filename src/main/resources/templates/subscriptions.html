@@ -6,18 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+    <link rel="icon" href="..\static\img\favicon.ico">
 
-    <title>Album example for Bootstrap</title>
+    <title>Subscriptions</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/album/">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap core CSS 
     <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
-
+-->
     <!-- Custom styles for this template -->
-    <link th:href="@{/css/subscriptions.css}" href=../static/css/subscriptions.css rel="stylesheet">
+    <link th:href="@{/css/subscriptions.css}" href=..\static\css\subscriptions.css rel="stylesheet">
   </head>
 
   <body>
@@ -26,78 +26,149 @@
         <h2>HEADER TBD</h2>
 
     </header>
+    <!DOCTYPE html>
+    <html>
+    <style>
+    .filterDiv {
+      display: none;
+    }
+    
+    .show {
+      display: block;
+    }
+       
+    </style>
 
-    <main role="main">
-
-      <section id="jumbotron" class="jumbotron text-center" style="background-color:#bbd4b9">
-        <div class="container">
-          <h1 class="jumbotron-heading">Subscriptions</h1>
-          <p class="lead text-muted">Choose one of our playful subscriptions below and get started! </p>
+<section id="jumbotron" class="jumbotron text-center" style="background-color:#bbd4b9">
+    <div class="container">
+      <h1 class="jumbotron-heading">Subscriptions</h1>
+      <p class="lead text-muted">Choose one of our playful subscriptions below and get started! </p>
 <!--           <p>
-            <a href="#" class="btn btn-primary my-2">Main call to action</a>
-            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-          </p> -->
-        </div>
-      </section>
+        <a href="#" class="btn btn-primary my-2">Main call to action</a>
+        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+      </p> -->
+    </div>
+  </section>
 
-      <div class="album py-5 bg-light">
+    <div class="album py-5 bg-light">
         <div class="container">
+    <div id="myBtnContainer">
+        <button class="btn btn-light" onclick="filterSelection('newborn')">Newborn</button>
+        <button class="btn btn-light" onclick="filterSelection('baby')">Baby</button>
+        <button class="btn btn-light" onclick="filterSelection('kids')">Kids</button>
+        <button class="btn btn-light active" onclick="filterSelection('all')">View all</button>
+      </div>
+    
+    <div class="container">
+        <div class="row">
 
-          <div class="row">
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <a href="#"> <img class="card-img-top" th:src="@{/img/sub_playful.jpg}" src="../static/img/sub_playful.jpg"></a>
-                <div class="card-body">
-                  <p class="card-text">The playful edit - Colorful yet prepares you for play in all kinds of weather</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <p class="subscription_button">
-                      <a type="button" class="btn btn-outline-secondary" href="#">Read more</a>
-                      <a type="button" class="btn btn-outline-success" href="#">Subscribe</a>
-                    </p>
-                  </div>
-                  <div class="price"> 299 SEK / Month </div>
-
-                </div>
+      <div class="filterDiv kids col-md-4">
+        <div class="card mb-4 box-shadow">
+            <a href="#"> <img class="card-img-top" th:src="@{/img/sub_playful.jpg}" src="../static/img/sub_playful.jpg"></a>
+            <div class="card-body">
+              <p class="card-text">The playful edit - Colorful yet prepares you for play in all kinds of weather</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="subscription_button">
+                  <a type="button" class="btn btn-outline-secondary" href="#">Read more</a>
+                  <a type="button" class="btn btn-outline-success" href="#">Subscribe</a>
+                </p>
               </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <a href="#"> <img class="card-img-top" th:src="@{/img/sub_playful.jpg}" src="../static/img/sub_playful.jpg"></a>
-                <div class="card-body">
-                  <p class="card-text">The playful edit - Colorful yet prepares you for play in all kinds of weather</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <p class="subscription_button">
-                      <a type="button" class="btn btn-outline-secondary" href="#">Read more</a>
-                      <a type="button" class="btn btn-outline-success" href="#">Subscribe</a>
-                    </p>
-                  </div>
-                  <div class="price"> 299 SEK / Month </div>
+              <div class="price"> 299 SEK / Month </div>
 
-                </div>
-              </div>
             </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <a href="#"> <img class="card-img-top" th:src="@{/img/sub_playful.jpg}" src="../static/img/sub_playful.jpg"></a>
-                <div class="card-body">
-                  <p class="card-text">The playful edit - Colorful yet prepares you for play in all kinds of weather</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <p class="subscription_button">
-                      <a type="button" class="btn btn-outline-secondary" href="#">Read more</a>
-                      <a type="button" class="btn btn-outline-success" href="#">Subscribe</a>
-                    </p>
-                  </div>
-                  <div class="price"> 299 SEK / Month </div>
+          </div>  
 
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
       </div>
 
-    </main>
+      <div class="filterDiv newborn col-md-4">
+        <div class="card mb-4 box-shadow">
+            <a href="#"> <img class="card-img-top" th:src="@{/img/sub_newborn.jpg}" src="../static/img/sub_newborn.jpg"></a>
+            <div class="card-body">
+              <p class="card-text">The playful edit - Colorful yet prepares you for play in all kinds of weather</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="subscription_button">
+                  <a type="button" class="btn btn-outline-secondary" href="#">Read more</a>
+                  <a type="button" class="btn btn-outline-success" href="#">Subscribe</a>
+                </p>
+              </div>
+              <div class="price"> 299 SEK / Month </div>
+
+            </div>
+          </div>  
+
+      </div>
+
+      <div class="filterDiv baby col-md-4">
+        <div class="card mb-4 box-shadow">
+            <a href="#"> <img class="card-img-top" th:src="@{/img/sub_baby.jpg}" src="../static/img/sub_baby.jpg"></a>
+            <div class="card-body">
+              <p class="card-text">The playful edit - Colorful yet prepares you for play in all kinds of weather</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="subscription_button">
+                  <a type="button" class="btn btn-outline-secondary" href="#">Read more</a>
+                  <a type="button" class="btn btn-outline-success" href="#">Subscribe</a>
+                </p>
+              </div>
+              <div class="price"> 299 SEK / Month </div>
+
+            </div>
+          </div>  
+
+      </div>
+
+      </div>
+      </div>
+      </div>
+    </div>
+    
+    <script>
+    filterSelection("all")
+    function filterSelection(c) {
+      var x, i;
+      x = document.getElementsByClassName("filterDiv");
+      if (c == "all") c = "";
+      for (i = 0; i < x.length; i++) {
+        removeClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+      }
+    }
+    
+    function addClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+      }
+    }
+    
+    function removeClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+          arr1.splice(arr1.indexOf(arr2[i]), 1);     
+        }
+      }
+      element.className = arr1.join(" ");
+    }
+    
+    // Add active class to the current button (highlight it)
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function(){
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+    </script>
+    
+    </body>
+    </html>
+    
 
     <footer>
         <h2>FOOTER TBD</h2>
@@ -106,10 +177,7 @@
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../dist/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/vendor/holder.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script  th:src="@{/js/subscriptions.js}" src="../static/js/subscriptions.js"></script>
   </body>
 </html>

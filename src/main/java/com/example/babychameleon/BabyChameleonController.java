@@ -20,4 +20,7 @@ public class BabyChameleonController {
     public String subscriptions() {
         return "subscriptions";
     }
+
+    @GetMapping("/login")
+    public String login() { return "login"; }
 }
