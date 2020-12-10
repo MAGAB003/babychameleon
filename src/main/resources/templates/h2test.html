@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>h2test</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>SubscriptionID</th>
+        <th>SubscriptionName</th>
+        <th>Subscriptiondetail</th>
+        <th>Theme</th>
+    </tr>
+    <tr th:each="subscription : ${subscriptions}">
+        <th th:text="${subscription.ID}"></th>
+        <th th:text="${subscription.subscriptionName}"></th>
+        <th th:text="${subscription.subscriptionDescription}"></th>
+        <th th:text="${subscription.theme}"></th>
+    </tr>
+</table>
+</body>
+</html>
