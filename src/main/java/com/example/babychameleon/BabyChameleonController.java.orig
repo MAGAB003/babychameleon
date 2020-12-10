@@ -54,16 +54,17 @@ public class BabyChameleonController {
     @GetMapping("/login")
     public String login() { return "login"; }
 
-
-
     @GetMapping("/h2test")
     public String h2test(Model model) {
         List<Subscription> newSubscription = (List<Subscription>)subscriptionRepository.findAll();
         model.addAttribute("subscriptions", newSubscription);
         return "h2test"; }
 
- @GetMapping("/test")
+
+    @GetMapping("/test")
     public String tst() {
         return "test";
     }
+
+
 }
