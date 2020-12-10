@@ -44,12 +44,7 @@ public class BabyChameleonController {
             model.addAttribute("subscription", subscription);
         return "subscriptionDetails";
     }*/
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
+    
     @GetMapping("/test")
     public String tst() {
         return "test";
