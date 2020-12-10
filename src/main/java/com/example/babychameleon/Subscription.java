@@ -9,10 +9,10 @@ public class Subscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String ID;
-    @Column(name="Subscription_Name")
-    private String subscriptionName;
-    @Column(name="Subscription_Description")
-    private String subscriptionDescription;
+    @Column(name="Name")
+    private String name;
+    @Column(name="Description")
+    private String description;
     private String imgID;
     @Column(name="Age_Group")
     private String ageGroup;
@@ -21,9 +21,9 @@ public class Subscription {
     public Subscription(){
     }
 
-    public Subscription(String subscriptionName, String subscriptionDescription, String imgID, String ageGroup, String theme){
-    this.subscriptionName =subscriptionName;
-    this.subscriptionDescription=subscriptionDescription;
+    public Subscription(String name, String description, String imgID, String ageGroup, String theme){
+    this.name =name;
+    this.description=description;
     this.imgID=imgID;
     this.ageGroup=ageGroup;
     this.theme=theme;
@@ -37,20 +37,20 @@ public class Subscription {
         this.ID = ID;
     }
 
-    public String getSubscriptionName() {
-        return subscriptionName;
+    public String getName() {
+        return name;
     }
 
-    public void setSubscriptionName(String subscriptionName) {
-        this.subscriptionName = subscriptionName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getSubscriptionDescription() {
-        return subscriptionDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setSubscriptionDescription(String subscriptionDescription) {
-        this.subscriptionDescription = subscriptionDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getImgID() {
