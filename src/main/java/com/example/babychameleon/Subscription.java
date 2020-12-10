@@ -9,9 +9,7 @@ public class Subscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private String ID;
-    @Column(name="Name")
     private String name;
-    @Column(name="Description")
     private String description;
     private String imgID;
     @Column(name="Age_Group")
