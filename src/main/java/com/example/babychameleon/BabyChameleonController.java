@@ -28,11 +28,6 @@ public class BabyChameleonController {
         return "aboutservice";
     }
 
-    @GetMapping("/subscriptiondetails")
-    public String subscription() {
-        return "subscriptiondetails";
-    }
-
     @GetMapping("/subscriptions")
     public String subscriptions(Model model) {
         List<Subscription> newSubscription = (List<Subscription>)subscriptionRepository.findAll();

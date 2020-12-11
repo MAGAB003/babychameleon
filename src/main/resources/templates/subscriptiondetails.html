@@ -30,12 +30,14 @@
                     <h2 class="featurette-heading" th:text="${subscription.name}"></h2>
                     <p class="lead" th:text="${subscription.description}"></p>
                     <div class="price" th:text="${subscription.price}+ ' SEK / Month'"> </div>
-
+                    <br>
+        <!--            <div class="d-flex justify-content-between align-items-center">
+                        <p class="subscription_button">
+                            <a type="button" class="btn btn-outline-success" th:href="@{checkout}" href="/checkout">Subscribe</a>
+                        </p>
+                    </div>-->
                 </div>
-                <!--                        <div class="col-md-5">
-                                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" th:src="${subscription.imgID}"  role="img" aria-label= "test" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Bild</title></svg>
 
-                                        </div>-->
 
                 <!-- Carousel-->
                 <div class="carousel slide col-md-5" data-ride="carousel" id="carouselExampleControls">
