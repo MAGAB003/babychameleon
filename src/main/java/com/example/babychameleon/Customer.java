@@ -1,70 +1,57 @@
 package com.example.babychameleon;
+
 import javax.persistence.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Entity
 public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
-    @Column(name="CUSTOMERNUMBER")
-    private int customerNumber;
-    @Column(name="FIRSTNAME")
+    private Long id;
+    @Column(name="First_Name")
     private String firstName;
-    @Column(name="LASTNAME")
+    @Column(name="Last_Name")
     private String lastName;
-    @Column(name="Email")
     private String email;
     @Column(name="Street_Address")
     private String streetAddress;
     @Column(name="Postal_Code")
-    private int postalCode;
+    private String postalCode;
     private String city;
-    @Column(name="CREDITCARDNUMBER")
-    private int creditcardNumber;
-    @Column(name="CARDEXPIRATIONDATE")
+    private String country;
+    @Column(name="Credit_Card_Number")
+    private String creditCardNumber;
+    @Column(name="Card_Expiration_Date")
     private String cardExpirationDate;
-    @Column(name="CVVCODE")
-    private int cvvCode;
-    private AtomicInteger idCounter=new AtomicInteger();
+    @Column(name="Cvv_Code")
+    private String cvvCode;
 
-    public Customer(String firstName, String lastName, String email, String streetAddress, int postalCode,String city){
-    this.customerNumber=createCustomerNumber();
-    this.firstName=firstName;
-    this.lastName=lastName;
-    this.email=email;
-    this.streetAddress=streetAddress;
-    this.postalCode= postalCode;
-    this.city=city;
+    public Customer() {
     }
 
-    public Customer(String firstName, String lastName, String customerEmail, String customerStreetAddress, int postalCode,String city, int creditcardNumber, String cardExpirationDate, int cvvCode){
-    this(firstName,lastName,customerEmail, customerStreetAddress,postalCode,city);
-    this.creditcardNumber=creditcardNumber;
-    this.cardExpirationDate=cardExpirationDate;
-    this.cvvCode=cvvCode;
+    public Customer(String firstName, String lastName, String email, String streetAddress, String postalCode, String city, String country) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.streetAddress = streetAddress;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.country = country;
     }
 
-    private int createCustomerNumber() {
-        return Integer.valueOf(idCounter.incrementAndGet());
+    public Customer(String firstName, String lastName, String customerEmail, String customerStreetAddress, String postalCode, String city, String country, String creditcardNumber, String cardExpirationDate, String cvvCode) {
+        this(firstName, lastName, customerEmail, customerStreetAddress, postalCode, city, country);
+        this.creditCardNumber = creditcardNumber;
+        this.cardExpirationDate = cardExpirationDate;
+        this.cvvCode = cvvCode;
     }
 
-
-    public Long getID() {
-        return ID;
+    public Long getId() {
+        return id;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
-    }
-
-    public int getCustomerNumber() {
-        return customerNumber;
-    }
-
-    public void setCustomerNumber(int customerNumber) {
-        this.customerNumber = customerNumber;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -99,11 +86,11 @@ public class Customer {
         this.streetAddress = streetAddress;
     }
 
-    public int getPostalCode() {
+    public String getPostalCode() {
         return postalCode;
     }
 
-    public void setPostalCode(int postalCode) {
+    public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
 
@@ -115,12 +102,20 @@ public class Customer {
         this.city = city;
     }
 
-    public int getCreditcardNumber() {
-        return creditcardNumber;
+    public String getCountry() {
+        return country;
     }
 
-    public void setCreditcardNumber(int creditcardNumber) {
-        this.creditcardNumber = creditcardNumber;
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
+
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
     }
 
     public String getCardExpirationDate() {
@@ -131,11 +126,11 @@ public class Customer {
         this.cardExpirationDate = cardExpirationDate;
     }
 
-    public int getCvvCode() {
+    public String getCvvCode() {
         return cvvCode;
     }
 
-    public void setCvvCode(int cvvCode) {
+    public void setCvvCode(String cvvCode) {
         this.cvvCode = cvvCode;
     }
 
