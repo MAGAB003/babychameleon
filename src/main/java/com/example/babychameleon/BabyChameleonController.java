@@ -9,7 +9,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-import java.util.List;
 
 @Controller
 public class BabyChameleonController {
