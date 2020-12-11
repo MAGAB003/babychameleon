@@ -67,4 +67,9 @@ public class BabyChameleonController {
         List<Customer> customers = (List<Customer>)customerRepository.findAll();
         model.addAttribute("customers", customers);
         return "h2test"; }
+
+    @GetMapping("/checkout")
+    public String checkout() {
+        return "checkout";
+    }
 }
