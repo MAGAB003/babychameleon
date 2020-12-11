@@ -53,12 +53,10 @@
                             <p class="subscription_button">
                                 <a type="button" class="btn btn-outline-secondary" th:href="@{'/subscription/'+${subscription.ID}}" href="..'/subscription/'+${subscription.ID}">Read
                                     more</a>
-                                <a type="button" class="btn btn-outline-success" href="#">Subscribe</a>
+                                <a type="button" class="btn btn-outline-success" th:href="@{checkout}" href="../checkout">Subscribe</a>
                             </p>
                         </div>
-<!--                        ADD WHEN DATABASE HAS PRICE-->
-<!--                       <div class="price" th:text="${subscription.price}+ 'SEK / Month'"> </div>-->
-                       <div class="price">299 SEK/Month</div>
+                       <div class="price" th:text="${subscription.price}+ ' SEK / Month'"> </div>
                     </div>
                 </div>
             </div>
