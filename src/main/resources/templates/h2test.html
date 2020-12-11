@@ -5,33 +5,35 @@
     <title>h2test</title>
 </head>
 <body>
-<table>
+<h2>Subscription</h2>
+<table border="1">
     <tr>
-        <th>SubscriptionID</th>
-        <th>SubscriptionName</th>
-        <th>Subscriptiondetail</th>
-        <th>Theme</th>
+        <th>id</th>
+        <th>name</th>
+        <th>description</th>
+        <th>ageGroup</th>
     </tr>
     <tr th:each="subscription : ${subscriptions}">
-        <th th:text="${subscription.ID}"></th>
-        <th th:text="${subscription.name}"></th>
-        <th th:text="${subscription.description}"></th>
-        <th th:text="${subscription.theme}"></th>
+        <td th:text="${subscription.id}"></td>
+        <td th:text="${subscription.name}"></td>
+        <td th:text="${subscription.description}"></td>
+        <td th:text="${subscription.ageGroup}"></td>
     </tr>
 </table>
 
-<table>
+<h2>Customer</h2>
+<table border="1">
     <tr>
-        <th>Customer Id</th>
-        <th>Customer firstName</th>
-        <th>Customer lastname </th>
-        <th>Customer email</th>
+        <th>id</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>email</th>
     </tr>
     <tr th:each="customer : ${customers}">
-        <th th:text="${customer.ID}"></th>
-        <th th:text="${customer.firstName}"></th>
-        <th th:text="${customer.lastName}"></th>
-        <th th:text="${customer.email}"></th>
+        <td th:text="${customer.id}"></td>
+        <td th:text="${customer.firstName}"></td>
+        <td th:text="${customer.lastName}"></td>
+        <td th:text="${customer.email}"></td>
     </tr>
 </table>
 </body>
