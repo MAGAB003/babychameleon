@@ -15,12 +15,10 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link th:href="@{/css/styles.css}" href="../static/css/styles.css" rel="stylesheet"/>
     <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
-    <link th:href="@{/css/subscriptions.css}" href=..\static\css\subscriptions.css rel="stylesheet">
 </head>
 <body>
 <div th:replace="index :: topbar"></div>
 <section class="page-section first-section">
-
 <div id="accordion">
     <div class="card">
         <div class="card-header" id="headingOne">
@@ -33,10 +31,10 @@
 
         <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
             <div class="card-body">
-                <h4>The problem</h4><br>
+                <h6>The problem</h6><br>
                 Children grows very quickly, and parents get to buy a lot of new clothes often even before the clothes are worn out.
                     <br><br>
-                <h4>The solution</h4><br>
+                <h6>The solution</h6><br>
                 We offer subscription service for childrens clothes. We believe that sustainability, cost consciousness and circularity is important for our wallet as well as our planet. We want to offer our customers a new sustainable shopping experience that not only minimize the environmental impact but at the same time creates more time to experience the important things in life.
             </div>
         </div>
@@ -59,26 +57,28 @@
         <div class="card-header" id="headingThree">
             <h5 class="mb-0">
                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    How to sign up and help the world
+                   How to sign up and help the world
                 </button>
             </h5>
         </div>
         <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
             <div class="card-body">
-                <h4>Step 1</h4>
+
+                <h6>Step 1</h6>
                 You browse the service and look at packages/subscription options.
 
-                <h4>Step 2:</h4>
+                <h6>Step 2:</h6>
                 You choose which subscription package(s) you want
 
-                <h4>Step 3:</h4>
+                <h6>Step 3:</h6>
                 You create your your account
 
-                <h4>Step 4:</h4>
+                <h6>Step 4:</h6>
                 You choose which child/children the chosen subscription package(s) should be applied for or add a new child
 
-                <h4>Step 5:</h4>
+                <h6>Step 5:</h6>
                 Continue to checkout/shopping cart view, Choose payment method, Choose delivery method, start subscription
+
             </div>
         </div>
     </div>
@@ -92,20 +92,19 @@
         </div>
         <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordion">
             <div class="card-body">
-                <h4>Question 1</h4>
+                <h6>Question 1</h6>
                 Answer Answer Answer Answer
 
-                <h4>Question 2:</h4>
+                <h6>Question 2:</h6>
                 Answer Answer Answer Answer
 
-                <h4>Question 3:</h4>
+                <h6>Question 3:</h6>
                 Answer Answer Answer Answer
             </div>
         </div>
     </div>
 </div>
 </section>
-
 <div th:replace="index :: bottombar"></div>
 <div th:replace="index :: scripts"></div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

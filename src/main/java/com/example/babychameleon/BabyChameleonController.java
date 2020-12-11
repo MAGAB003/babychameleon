@@ -9,7 +9,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-import java.util.List;
 
 @Controller
 public class BabyChameleonController {
@@ -68,4 +67,9 @@ public class BabyChameleonController {
         List<Customer> customers = (List<Customer>)customerRepository.findAll();
         model.addAttribute("customers", customers);
         return "h2test"; }
+
+    @GetMapping("/checkout")
+    public String checkout() {
+        return "checkout";
+    }
 }
