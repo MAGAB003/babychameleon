@@ -28,24 +28,19 @@ public class BabyChameleonController {
         return "aboutservice";
     }
 
-    @GetMapping("/subscriptiondetails")
-    public String subscription() {
-        return "subscriptiondetails";
-    }
-
     @GetMapping("/subscriptions")
     public String subscriptions(Model model) {
         List<Subscription> newSubscription = (List<Subscription>) subscriptionRepository.findAll();
         model.addAttribute("subscriptions", newSubscription);
         return "subscriptions";
     }
-/*
-    @GetMapping("/subscriptions/{id}")
-    public Subscription getSubscription(Model model, @PathVariable Integer id) {
-            Subscription subscription = subscriptionRepository.getSubscription(id);
+
+    @GetMapping("/subscription/{id}")
+    public String getSubscription(Model model, @PathVariable Long id) {
+            Subscription subscription = subscriptionRepository.findById(id).get();
             model.addAttribute("subscription", subscription);
-        return "subscriptionDetails";
-    }*/
+        return "subscriptiondetails";
+    }
 
     @GetMapping("/login")
     public String login() {
