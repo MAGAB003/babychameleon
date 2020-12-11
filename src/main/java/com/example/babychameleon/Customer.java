@@ -8,19 +8,24 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID;
+    @Column(name="CUSTOMERNUMBER")
     private int customerNumber;
-    @Column(name="FirstName")
+    @Column(name="FIRSTNAME")
     private String firstName;
-    @Column(name="LastName")
+    @Column(name="LASTNAME")
     private String lastName;
     @Column(name="Email")
     private String email;
-    @Column(name="StreetAddress")
+    @Column(name="Street_Address")
     private String streetAddress;
+    @Column(name="Postal_Code")
     private int postalCode;
     private String city;
-    private int creditCardNumber;
-    private String creditCardExpirationDate;
+    @Column(name="CREDITCARDNUMBER")
+    private int creditcardNumber;
+    @Column(name="CARDEXPIRATIONDATE")
+    private String cardExpirationDate;
+    @Column(name="CVVCODE")
     private int cvvCode;
     private AtomicInteger idCounter=new AtomicInteger();
 
@@ -34,10 +39,10 @@ public class Customer {
     this.city=city;
     }
 
-    public Customer(String firstName, String lastName, String customerEmail, String customerStreetAddress, int postalCode,String city, int creditCardNumber, String creditCardExpirationDate, int cvvCode){
+    public Customer(String firstName, String lastName, String customerEmail, String customerStreetAddress, int postalCode,String city, int creditcardNumber, String cardExpirationDate, int cvvCode){
     this(firstName,lastName,customerEmail, customerStreetAddress,postalCode,city);
-    this.creditCardNumber=creditCardNumber;
-    this.creditCardExpirationDate=creditCardExpirationDate;
+    this.creditcardNumber=creditcardNumber;
+    this.cardExpirationDate=cardExpirationDate;
     this.cvvCode=cvvCode;
     }
 
@@ -110,20 +115,20 @@ public class Customer {
         this.city = city;
     }
 
-    public int getCreditCardNumber() {
-        return creditCardNumber;
+    public int getCreditcardNumber() {
+        return creditcardNumber;
     }
 
-    public void setCreditCardNumber(int creditCardNumber) {
-        this.creditCardNumber = creditCardNumber;
+    public void setCreditcardNumber(int creditcardNumber) {
+        this.creditcardNumber = creditcardNumber;
     }
 
-    public String getCreditCardExpirationDate() {
-        return creditCardExpirationDate;
+    public String getCardExpirationDate() {
+        return cardExpirationDate;
     }
 
-    public void setCreditCardExpirationDate(String creditCardExpirationDate) {
-        this.creditCardExpirationDate = creditCardExpirationDate;
+    public void setCardExpirationDate(String cardExpirationDate) {
+        this.cardExpirationDate = cardExpirationDate;
     }
 
     public int getCvvCode() {
