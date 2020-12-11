@@ -51,8 +51,13 @@
     <div class="row">
         <div class="col-md-3 mb-3">
                 <label for="firstName">Childs first name</label>
-                <input type="text" class="form-control" id="childfirstName" placeholder="" value="" required="">
+                <input type="text" class="form-control" id="childfirstName" list="select-list-id" placeholder="" value="" required="">
                 <div class="invalid-feedback"> A name is required. </div>
+                <datalist id="select-list-id">
+                <option value="Van Halen"></option>
+                <option value="Janet"></option>
+                <option value="Ozzy"></option>
+                </datalist>
             </div>
         <div class="col-md-3 mb-3">
             <div class="form-group"> <!-- Date input -->
@@ -84,7 +89,12 @@
         </div>
     </div>
 
-
+    <div class="row">
+        <div class="col-md-3 mb-3">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">New child..</button>
+            <hr class="mb-4">
+        </div>
+     </div>
 
 
                 <h4 class="mb-3">Billing address</h4>
