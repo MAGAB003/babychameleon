@@ -8,22 +8,22 @@ public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="First_Name")
+    @Column(name = "First_Name")
     private String firstName;
-    @Column(name="Last_Name")
+    @Column(name = "Last_Name")
     private String lastName;
     private String email;
-    @Column(name="Street_Address")
+    @Column(name = "Street_Address")
     private String streetAddress;
-    @Column(name="Postal_Code")
+    @Column(name = "Postal_Code")
     private String postalCode;
     private String city;
     private String country;
-    @Column(name="Credit_Card_Number")
+    @Column(name = "Credit_Card_Number")
     private String creditCardNumber;
-    @Column(name="Card_Expiration_Date")
+    @Column(name = "Card_Expiration_Date")
     private String cardExpirationDate;
-    @Column(name="Cvv_Code")
+    @Column(name = "Cvv_Code")
     private String cvvCode;
 
     public Customer() {

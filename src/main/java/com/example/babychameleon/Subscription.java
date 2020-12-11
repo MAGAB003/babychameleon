@@ -1,39 +1,37 @@
 package com.example.babychameleon;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-
 import javax.persistence.*;
 
 @Entity
 public class Subscription {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID;
+    private Long id;
     private String name;
     private String description;
     private String imgID;
-    @Column(name="Age_Group")
+    @Column(name = "Age_Group")
     private String ageGroup;
     private String theme;
     private int price;
 
-    public Subscription(){
+    public Subscription() {
     }
 
-    public Subscription(String name, String description, String imgID, String ageGroup, String theme){
-    this.name =name;
-    this.description=description;
-    this.imgID=imgID;
-    this.ageGroup=ageGroup;
-    this.theme=theme;
+    public Subscription(String name, String description, String imgID, String ageGroup, String theme) {
+        this.name = name;
+        this.description = description;
+        this.imgID = imgID;
+        this.ageGroup = ageGroup;
+        this.theme = theme;
     }
 
-    public Long getID() {
-        return ID;
+    public Long getId() {
+        return id;
     }
 
-    public void setID(Long ID) {
-        this.ID = ID;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -75,6 +73,7 @@ public class Subscription {
     public void setTheme(String theme) {
         this.theme = theme;
     }
+
     public int getPrice() {
         return price;
     }
