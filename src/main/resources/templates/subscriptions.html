@@ -41,12 +41,13 @@
     </div>
     <div class="container">
         <div class="row">
-            <div th:each="subscription : ${subscriptions}" class="filterDiv ${subscription.agegroup} col-md-4">
+            <div th:each="subscription : ${subscriptions}" class="filterDiv ${subscription.ageGroup} col-md-4">
                 <div class="card mb-4 box-shadow">
                     <!--ADD THIS BELOW WHEN WE HAVE CORRECT IMG IN DB th:src="${subscription.imgID}"-->
-                    <a href="#"> <img class="card-img-top" th:src="${subscription.imgID}"> </a>
+                    <a th:href="@{'/subscription/'+${subscription.ID}}" href="..'/subscription/'+${subscription.ID}"> <img class="card-img-top" th:src="${subscription.img1}"> </a>
                     <div class="card-body">
-                        <p class="card-text" th:text="${subscription.name}"></p>
+
+                        <p class="card-title" th:text="${subscription.ageGroup + ' - ' + subscription.name}"></p>
                         <p class="card-text" th:text="${subscription.description}">
                         </p>
                         <div class="d-flex justify-content-between align-items-center">
