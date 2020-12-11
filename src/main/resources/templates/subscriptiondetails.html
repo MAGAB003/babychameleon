@@ -2,18 +2,18 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
     <title>Subscription details - Baby Chameleon</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}" href="../static/img/favicon.ico" />
+    <link href="../static/img/favicon.ico" rel="icon" th:href="@{/img/favicon.ico}" type="image/x-icon"/>
     <!-- Font Awesome icons (free version)-->
-    <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
+    <script crossorigin="anonymous" src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"></script>
     <!-- Google fonts-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet"
           type="text/css"/>
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link th:href="@{/css/styles.css}" href="../static/css/styles.css" rel="stylesheet"/>
+    <link href="../static/css/styles.css" rel="stylesheet" th:href="@{/css/styles.css}"/>
 </head>
 
 <body>
@@ -23,53 +23,56 @@
     <div class="container">
 
         <div class="container marketing">
-            <!-- PREPARE FOR MVC IMPLEMENTATION -->
-            <!--        <hr class="featurette-divider">
-
-                    <div class="row featurette">
-                        <div class="col-md-7">
-                            <h2 class="featurette-heading" th:text="${subscription.name}"></h2>
-                            <p class="lead" th:text="${subscription.description}"></p>
-                        </div>
-                        <div class="col-md-5">
-                            <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" th:src="${subscription.imgID}"  role="img" aria-label= "test" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Bild</title></svg>
-
-                        </div>
-                    </div>
-
-
-                    <hr class="featurette-divider">-->
+            <hr class="featurette-divider">
 
             <div class="row featurette">
                 <div class="col-md-7">
-                    <h2 class="featurette-heading" >HEADING EXAMPLE</h2>
-                    <p class="lead" >DESCRIPTION EXAMPLE</p>
+                    <h2 class="featurette-heading" th:text="${subscription.name}"></h2>
+                    <p class="lead" th:text="${subscription.description}"></p>
+                    <div class="price" th:text="${subscription.price}+ ' SEK / Month'"> </div>
+                    <br>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="subscription_button">
+                            <a type="button" class="btn btn-outline-success" th:href="@{/checkout}" href="/checkout">Subscribe</a>
+                        </p>
+                    </div>
                 </div>
 
+
                 <!-- Carousel-->
-                <div id="carouselExampleControls" class="carousel slide col-md-5" data-ride="carousel">
+                <div class="carousel slide col-md-5" data-ride="carousel" id="carouselExampleControls">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" th:src="@{/img/subscriptions/baby_overall.jpg}" src="../static/img/subscriptions/baby_overall" alt="Third slide">
+                            <img alt="First slide" class="d-block w-100" th:src="${subscription.img1}">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" th:src="@{/img/subscriptions/baby_overall_detail.jpg}" src="../static/img/subscriptions/baby_overall_detail.jpg" alt="Third slide">
+                            <img alt="Second slide" class="d-block w-100"
+                                 th:src="${subscription.img2}">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" th:src="@{/img/subscriptions/baby_boots.jpg}" src="../static/img/subscriptions/baby_boots.jpg" alt="Third slide">
+                            <img alt="Third slide" class="d-block w-100"
+                                 th:src="${subscription.img3}">
+                        </div>
+                        <div class="carousel-item">
+                            <img alt="Fourth slide" class="d-block w-100"
+                                 th:src="${subscription.img4}">
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <a class="carousel-control-prev" data-slide="prev" href="#carouselExampleControls" role="button">
+                        <span aria-hidden="true" class="carousel-control-prev-icon"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <a class="carousel-control-next" data-slide="next" href="#carouselExampleControls" role="button">
+                        <span aria-hidden="true" class="carousel-control-next-icon"></span>
                         <span class="sr-only">Next</span>
                     </a>
                 </div>
             </div>
+
+
+            <hr class="featurette-divider">
         </div>
+    </div>
     </div>
 </section>
 
@@ -77,7 +80,7 @@
 <!-- Core theme JS-->
 <div th:replace="index :: bottombar"></div>
 <div th:replace="index :: scripts"></div>
-<script th:src="@{/js/scripts.js}" src="../static/js/scripts.js"></script>
+<script src="../static/js/scripts.js" th:src="@{/js/scripts.js}"></script>
 
 
 </body>

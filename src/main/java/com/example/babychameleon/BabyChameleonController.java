@@ -35,17 +35,17 @@ public class BabyChameleonController {
 
     @GetMapping("/subscriptions")
     public String subscriptions(Model model) {
-        List<Subscription> newSubscription = (List<Subscription>)subscriptionRepository.findAll();
+        List<Subscription> newSubscription = (List<Subscription>) subscriptionRepository.findAll();
         model.addAttribute("subscriptions", newSubscription);
         return "subscriptions";
     }
-/*
-    @GetMapping("/subscriptions/{id}")
-    public Subscription getSubscription(Model model, @PathVariable Integer id) {
-            Subscription subscription = subscriptionRepository.getSubscription(id);
+
+    @GetMapping("/subscription/{id}")
+    public String getSubscription(Model model, @PathVariable Long id) {
+            Subscription subscription = subscriptionRepository.findById(id).get();
             model.addAttribute("subscription", subscription);
-        return "subscriptionDetails";
-    }*/
+        return "subscriptiondetails";
+    }
 
     @GetMapping("/login")
     public String login() {
@@ -60,9 +60,12 @@ public class BabyChameleonController {
 
     @GetMapping("/h2test")
     public String h2test(Model model) {
-        List<Subscription> subscriptions = (List<Subscription>)subscriptionRepository.findAll();
+        List<Subscription> subscriptions = (List<Subscription>) subscriptionRepository.findAll();
         model.addAttribute("subscriptions", subscriptions);
-        return "h2test"; }
+        List<Customer> customers = (List<Customer>) customerRepository.findAll();
+        model.addAttribute("customers", customers);
+        return "h2test";
+    }
 
     @GetMapping("/test")
     public String tst() {

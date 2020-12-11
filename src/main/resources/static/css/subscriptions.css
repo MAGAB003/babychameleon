@@ -22,3 +22,9 @@
   .show {
     display: block;
   }
+
+  .card-title{
+      font-size: 23px;
+      color: grey;
+      font-weight: bold;
+  }
