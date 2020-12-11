@@ -17,6 +17,9 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link th:href="@{/css/styles.css}" href="../static/css/styles.css" rel="stylesheet"/>
     <link th:href="@{/css/checkout.css}" href=..\static\css\checkout.css rel="stylesheet">
+    <!-- Date picker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
 </head>
 <body>
 <div th:replace="index :: topbar"></div>
@@ -24,11 +27,11 @@
 
 
 <section class="page-section first-section">
+    <div class="container">
     <div class="col-md-5 order-md-1">
 
-    <div class="container">
+
         <div class="py-5 text-center">
-            <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
             <h2>Checkout</h2>
             <p class="lead">Please choose and verify your orders</p>
         </div>
@@ -44,19 +47,21 @@
             </div>
         </div>
 
-
+<form class="needs-validation" novalidate="">
     <div class="row">
-        <div class="col-md-5 mb-3">
-            <label for="child">Child</label>
-            <select class="custom-select d-block w-100" id="child" required="">
-                <option value="">Choose...</option>
-                <option>Van Halen</option>
-                <option>Freddy</option>
-            </select>
-            <div class="invalid-feedback"> Please select a child. </div>
+        <div class="col-md-3 mb-3">
+                <label for="firstName">Childs first name</label>
+                <input type="text" class="form-control" id="childfirstName" placeholder="" value="" required="">
+                <div class="invalid-feedback"> A name is required. </div>
+            </div>
+        <div class="col-md-3 mb-3">
+            <div class="form-group"> <!-- Date input -->
+                <label class="control-label" for="date">Date</label>
+                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+            </div>
         </div>
         <div class="col-md-3 mb-3">
-            <label for="state">Package</label>
+            <label for="package">Package</label>
             <select class="custom-select d-block w-100" id="package" required="">
                 <option value="">Choose...</option>
                 <option>1</option>
@@ -67,7 +72,7 @@
             <div class="invalid-feedback"> Please provide a selected package. </div>
         </div>
         <div class="col-md-3 mb-3">
-            <label for="state">Starting size</label>
+            <label for="size">Starting size</label>
             <select class="custom-select d-block w-100" id="size" required="">
                 <option value="">Choose...</option>
                 <option>92</option>
@@ -83,7 +88,7 @@
 
 
                 <h4 class="mb-3">Billing address</h4>
-                <form class="needs-validation" novalidate="">
+
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="firstName">First name</label>
@@ -96,7 +101,7 @@
                             <div class="invalid-feedback"> Valid last name is required. </div>
                         </div>
                     </div>
-                   
+
                     <div class="mb-3">
                         <label for="email">Email <span class="text-muted">(Optional)</span></label>
                         <input type="email" class="form-control" id="email" placeholder="you@example.com">
@@ -112,33 +117,18 @@
                         <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
                     </div>
                     <div class="row">
-                        <div class="col-md-5 mb-3">
-                            <label for="country">Country</label>
-                            <select class="custom-select d-block w-100" id="country" required="">
-                                <option value="">Choose...</option>
-                                <option>United States</option>
-                            </select>
-                            <div class="invalid-feedback"> Please select a valid country. </div>
-                        </div>
-                        <div class="col-md-4 mb-3">
-                            <label for="state">State</label>
-                            <select class="custom-select d-block w-100" id="state" required="">
-                                <option value="">Choose...</option>
-                                <option>California</option>
-                            </select>
-                            <div class="invalid-feedback"> Please provide a valid state. </div>
-                        </div>
                         <div class="col-md-3 mb-3">
                             <label for="zip">Zip</label>
                             <input type="text" class="form-control" id="zip" placeholder="" required="">
                             <div class="invalid-feedback"> Zip code required. </div>
                         </div>
+                        <div class="col-md-8 mb-3">
+                            <label for="City">City</label>
+                            <input type="text" class="form-control" id="city" placeholder="" required="">
+                            <div class="invalid-feedback"> City required. </div>
+                        </div>
                     </div>
                     <hr class="mb-4">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="same-address">
-                        <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-                    </div>
                     <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input" id="save-info">
                         <label class="custom-control-label" for="save-info">Save this information for next time</label>
@@ -189,20 +179,29 @@
                 </form>
             </div>
         </div>
-        <footer class="my-5 pt-5 text-muted text-center text-small">
-            <p class="mb-1">© 2017-2019 Company Name</p>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Privacy</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="#">Support</a></li>
-            </ul>
-        </footer>
-    </div>
+      </div>
 </section>
 
 <div th:replace="index :: bottombar"></div>
 <div th:replace="index :: scripts"></div>
 
 <script th:src="@{/js/checkout.js}" src="../static/js/checkout.js"></script>
+<!--  jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<script>
+    $(document).ready(function(){
+      var date_input=$('input[name="date"]'); //our date input has the name "date"
+      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+      var options={
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+</script>
 </body>
 </html>
