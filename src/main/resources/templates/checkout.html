@@ -21,7 +21,11 @@
 <body>
 <div th:replace="index :: topbar"></div>
 
+
+
 <section class="page-section first-section">
+    <div class="col-md-5 order-md-1">
+
     <div class="container">
         <div class="py-5 text-center">
             <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
@@ -29,8 +33,17 @@
             <p class="lead">Please choose and verify your orders</p>
         </div>
     </div>
+        <div class="row">
+            <div class="col-md-5 mb-3">
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Create login</button>
+            </div>
+            <div class="col-md-5 mb-3">
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+            </div>
+        </div>
 
-    <div class="col-md-5 order-md-1">
 
     <div class="row">
         <div class="col-md-5 mb-3">
@@ -83,16 +96,7 @@
                             <div class="invalid-feedback"> Valid last name is required. </div>
                         </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="username">Username</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text">@</span>
-                            </div>
-                            <input type="text" class="form-control" id="username" placeholder="Username" required="">
-                            <div class="invalid-feedback" style="width: 100%;"> Your username is required. </div>
-                        </div>
-                    </div>
+                   
                     <div class="mb-3">
                         <label for="email">Email <span class="text-muted">(Optional)</span></label>
                         <input type="email" class="form-control" id="email" placeholder="you@example.com">
