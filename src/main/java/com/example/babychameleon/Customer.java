@@ -29,6 +29,10 @@ public class Customer {
     private int cvvCode;
     private AtomicInteger idCounter=new AtomicInteger();
 
+    public Customer() {
+    }
+
+
     public Customer(String firstName, String lastName, String email, String streetAddress, int postalCode,String city){
     this.customerNumber=createCustomerNumber();
     this.firstName=firstName;

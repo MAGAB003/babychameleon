@@ -49,9 +49,16 @@ public class BabyChameleonController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "index";
     }
-@GetMapping("/h2test")
+
+    @GetMapping("/logout")
+    public String logout() {
+        return "index";
+    }
+
+
+    @GetMapping("/h2test")
     public String h2test(Model model) {
         List<Subscription> subscriptions = (List<Subscription>)subscriptionRepository.findAll();
         model.addAttribute("subscriptions", subscriptions);
