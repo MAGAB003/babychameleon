@@ -9,7 +9,6 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
-import java.util.List;
 
 @Controller
 public class BabyChameleonController {
@@ -29,23 +28,18 @@ public class BabyChameleonController {
         return "aboutservice";
     }
 
-    @GetMapping("/subscriptions")
-    public String subscriptions() {
-        return "subscriptions";
-    }
-
     @GetMapping("/subscriptiondetails")
     public String subscription() {
         return "subscriptiondetails";
     }
-/*
+
     @GetMapping("/subscriptions")
     public String subscriptions(Model model) {
-        List<Subscription> subscriptionList = subscriptionRepository.getSubscriptions();
-        model.addAttribute("subscriptionList", subscriptionList);
+        List<Subscription> newSubscription = (List<Subscription>)subscriptionRepository.findAll();
+        model.addAttribute("subscriptions", newSubscription);
         return "subscriptions";
     }
-
+/*
     @GetMapping("/subscriptions/{id}")
     public Subscription getSubscription(Model model, @PathVariable Integer id) {
             Subscription subscription = subscriptionRepository.getSubscription(id);
@@ -73,4 +67,9 @@ public class BabyChameleonController {
         List<Customer> customers = (List<Customer>)customerRepository.findAll();
         model.addAttribute("customers", customers);
         return "h2test"; }
+
+    @GetMapping("/checkout")
+    public String checkout() {
+        return "checkout";
+    }
 }
