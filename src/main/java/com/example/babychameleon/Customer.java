@@ -27,10 +27,9 @@ public class Customer {
     private String cardExpirationDate;
     @Column(name="CVVCODE")
     private int cvvCode;
-    private AtomicInteger idCounter=new AtomicInteger();
+
 
     public Customer(String firstName, String lastName, String email, String streetAddress, int postalCode,String city){
-    this.customerNumber=createCustomerNumber();
     this.firstName=firstName;
     this.lastName=lastName;
     this.email=email;
@@ -46,8 +45,10 @@ public class Customer {
     this.cvvCode=cvvCode;
     }
 
+    private AtomicInteger idCounter=new AtomicInteger();
+
     private int createCustomerNumber() {
-        return Integer.valueOf(idCounter.incrementAndGet());
+        return idCounter.incrementAndGet();
     }
 
 
