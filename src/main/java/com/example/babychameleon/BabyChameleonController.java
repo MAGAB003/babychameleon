@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 
+import javax.persistence.Column;
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,20 +91,25 @@ public class BabyChameleonController {
     }
 
     @GetMapping("/addnewcustomer")
-    public String addnewcustomer(@RequestParam String email, String password) {
-        User user = userRepository.findByUsername(email);
-        if (user == null) {
-            user = new User();
-            user.setUsername(email);
-            user.setPassword(encoder.encode(password));
-            userRepository.save(user);
-        }
-        return "ok";
+    public String addnewcustomer() {
+        return "addNewCustomer";
     }
 
+    @PostMapping("/addnewcustomer")
+    public String addnewcustomer(@RequestParam String email, String password, String firstName, String lastName, String streetAddress, String postalCode, String city, String country) {
+        User user = userRepository.findByUsername(email);
 
+        if (user == null) {
+            Customer customer = new Customer(firstName, lastName, email, streetAddress, postalCode, city, country);
+            customerRepository.save(customer);
 
-    @PostMapping("/checkout")
+            user = new User(email, encoder.encode(password), customer.getId());
+            userRepository.save(user);
+        }
+        return "index";
+    }
+
+  @PostMapping("/checkout")
     public String addSubscriptions(@RequestParam long id, HttpSession session) {
 
         Subscription subscription = subscriptionRepository.findById(id).get();
@@ -131,8 +138,6 @@ public class BabyChameleonController {
         }
         return "redirect:/checkout";
     }
-
-
 
 }
 
