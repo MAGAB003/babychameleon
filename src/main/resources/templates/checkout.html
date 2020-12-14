@@ -48,8 +48,8 @@
             </div>
         </div>
 
-<form class="needs-validation" novalidate="" th:each="subscription : ${session?.subscriptionCart}">
-    <div class="row">
+<form class="needs-validation" novalidate="" >
+    <div class="row" th:each="subscription : ${session?.subscriptionCart}">
         <div class="col-md-3 mb-3">
                 <label for="firstName">Child's first name</label>
                 <input type="text" class="form-control" id="childFirstName" placeholder="" value="" required="">
