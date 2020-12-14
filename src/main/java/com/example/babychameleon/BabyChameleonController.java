@@ -6,9 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
+import javax.persistence.Column;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 
@@ -90,15 +93,24 @@ public class BabyChameleonController {
     }
 
     @GetMapping("/addnewcustomer")
-    public String addnewcustomer(@RequestParam String email, String password) {
+    public String addnewcustomer() {
+        return "addNewCustomer";
+    }
+
+    @PostMapping("/addnewcustomer")
+    public String addnewcustomer(@RequestParam String email, String password, String firstName, String lastName, String streetAddress, String postalCode, String city, String country) {
         User user = userRepository.findByUsername(email);
+
         if (user == null) {
+            Customer customer = new Customer(firstName, lastName, email, streetAddress, postalCode, city, country);
+            customerRepository.save(customer);
+
             user = new User();
             user.setUsername(email);
             user.setPassword(encoder.encode(password));
+            user.setCustomerID(customer.getId());
             userRepository.save(user);
         }
-        return "ok";
+        return "index";
     }
 }
-
