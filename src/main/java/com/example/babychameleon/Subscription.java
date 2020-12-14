@@ -21,7 +21,7 @@ public class Subscription {
     public Subscription() {
     }
 
-    public Subscription(String name, String description, String img1, String img2, String img3, String img4, String ageGroup, String theme){
+    public Subscription(String name, String description, String img1, String img2, String img3, String img4, String ageGroup, String theme, int price){
     this.name =name;
     this.description=description;
     this.img1=img1;
@@ -30,6 +30,7 @@ public class Subscription {
     this.img4=img4;
     this.ageGroup=ageGroup;
     this.theme=theme;
+    this.price=price;
     }
 
     public Long getId() {
