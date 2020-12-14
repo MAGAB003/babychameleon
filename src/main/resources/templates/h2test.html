@@ -28,13 +28,34 @@
         <th>firstName</th>
         <th>lastName</th>
         <th>email</th>
+        <th>children.size()</th>
     </tr>
     <tr th:each="customer : ${customers}">
         <td th:text="${customer.id}"></td>
         <td th:text="${customer.firstName}"></td>
         <td th:text="${customer.lastName}"></td>
         <td th:text="${customer.email}"></td>
+        <td th:text="${customer.children.size()}"></td>
     </tr>
 </table>
+
+<h2>Child</h2>
+<table border="1">
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>birthdate</th>
+        <th>wearsDress</th>
+        <th>favoriteColor</th>
+    </tr>
+    <tr th:each="child : ${children}">
+        <td th:text="${child.id}"></td>
+        <td th:text="${child.name}"></td>
+        <td th:text="${child.birthdate}"></td>
+        <td th:text="${child.wearsDress}"></td>
+        <td th:text="${child.favoriteColor}"></td>
+    </tr>
+</table>
+
 </body>
 </html>

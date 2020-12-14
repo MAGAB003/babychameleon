@@ -42,10 +42,9 @@ AdminID BIGINT
 CREATE TABLE Child(
 ID BIGINT AUTO_INCREMENT PRIMARY KEY,
 Name VARCHAR(50) NOT NULL,
-AgeGroup VARCHAR(50) NOT NULL,
-Birthday DATE NOT NULL,
-FavoriteColor VARCHAR(50),
-FavoriteGarment VARCHAR(50),
+Birthdate DATE NOT NULL,
+Wears_Dress BIT,
+Favorite_Color VARCHAR(50),
 ParentID BIGINT NOT NULL,
 SubscriptionID BIGINT
 );
