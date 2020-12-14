@@ -111,4 +111,20 @@ public class Subscription {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Subscription{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", img1='" + img1 + '\'' +
+                ", img2='" + img2 + '\'' +
+                ", img3='" + img3 + '\'' +
+                ", img4='" + img4 + '\'' +
+                ", ageGroup='" + ageGroup + '\'' +
+                ", theme='" + theme + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }

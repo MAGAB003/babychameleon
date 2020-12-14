@@ -22,7 +22,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
         protected void configure(HttpSecurity http) throws Exception {
             http
                     .authorizeRequests()
-                    .antMatchers("/", "/aboutservice", "/subscriptiondetails", "/subscriptions", "/checkout", "/init", "/index", "../resources/static/css/*.css", "/h2", "/h2/**", "/addnewcustomer").permitAll()
+                    .antMatchers("/", "/aboutservice", "/subscription/*", "/subscriptions", "/checkout", "/init", "/index", "../resources/static/css/*.css", "/h2", "/h2/**", "/addnewcustomer").permitAll()
                     .anyRequest().authenticated()
                     .and()
                     .formLogin()

@@ -12,6 +12,7 @@ import org.springframework.web.client.RestTemplate;
 
 import javax.persistence.Column;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,6 +23,8 @@ public class BabyChameleonController {
     private SubscriptionRepository subscriptionRepository;
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private ChildRepository childRepository;
     @Autowired
     private UserRepository userRepository;
     @Autowired
@@ -69,10 +72,9 @@ public class BabyChameleonController {
 
     @GetMapping("/h2test")
     public String h2test(Model model) {
-        List<Subscription> subscriptions = (List<Subscription>) subscriptionRepository.findAll();
-        model.addAttribute("subscriptions", subscriptions);
-        List<Customer> customers = (List<Customer>) customerRepository.findAll();
-        model.addAttribute("customers", customers);
+        model.addAttribute("subscriptions", (List<Subscription>) subscriptionRepository.findAll());
+        model.addAttribute("customers", (List<Customer>) customerRepository.findAll());
+        model.addAttribute("children", (List<Child>) childRepository.findAll());
         return "h2test";
     }
 
@@ -113,4 +115,37 @@ public class BabyChameleonController {
         }
         return "index";
     }
+
+  @PostMapping("/checkout")
+    public String addSubscriptions(@RequestParam long id, HttpSession session) {
+
+        Subscription subscription = subscriptionRepository.findById(id).get();
+        List<Subscription> subscriptionCart =  (List) session.getAttribute("subscriptionCart");
+        if (subscriptionCart == null) {
+        //    session.setAttribute("sum", 0);
+            subscriptionCart = new ArrayList<>();
+            session.setAttribute("subscriptionCart", subscriptionCart);
+        }
+        //  Om vi vill vi hämta summan?
+        //   session.setAttribute("sum", (Integer) session.getAttribute("sum") + subscription.getPrice());
+        subscriptionCart.add(subscription);
+            return "checkout";
+    }
+
+    @PostMapping("/removeSubscription")
+    String removeItem(HttpSession session, @RequestParam long id) {
+        List<Subscription> subscriptionCart = (List) session.getAttribute("subscriptionCart");
+        if (subscriptionCart != null) {
+            for (Subscription subscription : subscriptionCart) {
+                if (subscription.getId().equals(id)) {
+                    subscriptionCart.remove(subscription);
+             //       session.setAttribute("sum", (Integer) session.getAttribute("sum") - subscription.getPrice());
+                    break;
+                }
+            }
+        }
+        return "redirect:/checkout";
+    }
+
 }
+
