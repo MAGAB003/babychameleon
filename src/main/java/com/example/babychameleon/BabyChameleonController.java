@@ -1,10 +1,12 @@
 package com.example.babychameleon;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -19,6 +21,10 @@ public class BabyChameleonController {
     private CustomerRepository customerRepository;
     @Autowired
     private ChildRepository childRepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    PasswordEncoder encoder;
 
     @GetMapping
     public String home() {
@@ -28,6 +34,11 @@ public class BabyChameleonController {
     @GetMapping("/aboutservice")
     public String aboutservice() {
         return "aboutservice";
+    }
+
+    @GetMapping("/subscriptiondetails")
+    public String subscription() {
+        return "subscriptiondetails";
     }
 
     @GetMapping("/subscriptions")
@@ -46,8 +57,14 @@ public class BabyChameleonController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "index";
     }
+
+    @GetMapping("/logout")
+    public String logout() {
+        return "index";
+    }
+
 
     @GetMapping("/h2test")
     public String h2test(Model model) {
@@ -62,8 +79,27 @@ public class BabyChameleonController {
         return "test";
     }
 
+    @GetMapping("/h2testCustomer")
+    public String h2testCustomer(Model model) {
+        List<Customer> customers = (List<Customer>)customerRepository.findAll();
+        model.addAttribute("customers", customers);
+        return "h2test"; }
+
     @GetMapping("/checkout")
     public String checkout() {
         return "checkout";
     }
+
+    @GetMapping("/addnewcustomer")
+    public String addnewcustomer(@RequestParam String email, String password) {
+        User user = userRepository.findByUsername(email);
+        if (user == null) {
+            user = new User();
+            user.setUsername(email);
+            user.setPassword(encoder.encode(password));
+            userRepository.save(user);
+        }
+        return "ok";
+    }
 }
+
