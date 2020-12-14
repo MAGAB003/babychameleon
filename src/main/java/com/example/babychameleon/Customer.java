@@ -28,15 +28,15 @@ public class Customer {
 
     public Customer() {
     }
-    public Customer(String firstName, String lastName, String email, String streetAddress, int postalCode,String city){
-    
-    this.firstName=firstName;
-    this.lastName=lastName;
-    this.email=email;
-    this.streetAddress=streetAddress;
-    this.postalCode= postalCode;
-    this.city=city;
-    this.country = country;
+
+    public Customer(String firstName, String lastName, String email, String streetAddress, String postalCode, String city, String country) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.streetAddress = streetAddress;
+        this.postalCode = postalCode;
+        this.city = city;
+        this.country = country;
     }
 
     public Customer(String firstName, String lastName, String customerEmail, String customerStreetAddress, String postalCode, String city, String country, String creditcardNumber, String cardExpirationDate, String cvvCode) {
