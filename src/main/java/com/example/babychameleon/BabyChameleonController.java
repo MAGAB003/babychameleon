@@ -107,10 +107,7 @@ public class BabyChameleonController {
             Customer customer = new Customer(firstName, lastName, email, streetAddress, postalCode, city, country);
             customerRepository.save(customer);
 
-            user = new User();
-            user.setUsername(email);
-            user.setPassword(encoder.encode(password));
-            user.setCustomerID(customer.getId());
+            user = new User(email, encoder.encode(password), customer.getId());
             userRepository.save(user);
         }
         return "index";

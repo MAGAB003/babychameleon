@@ -13,6 +13,15 @@ public class User {
     private Long customerID;
     private Long AdminID;
 
+    public User(){
+
+    }
+    public User(String username, String password, Long customerID) {
+        this.username = username;
+        this.password = password;
+        this.customerID = customerID;
+    }
+
     public Long getId() {
         return id;
     }
