@@ -48,7 +48,7 @@
             </div>
         </div>
 
-<form class="needs-validation" novalidate="">
+<form class="needs-validation" novalidate="" th:each="subscription : ${session?.subscriptionCart}">
     <div class="row">
         <div class="col-md-3 mb-3">
                 <label for="firstName">Child's first name</label>
@@ -64,7 +64,7 @@
         <div class="col-md-3 mb-3">
             <label for="package">Package</label>
             <select class="custom-select d-block w-100" id="package" required="">
-                <option value="">Choose...</option>
+                <option th:text="${subscription.name}"></option>
                 <option>Complete</option>
                 <option>Small</option>
             </select>
@@ -81,6 +81,10 @@
             </select>
             <div class="invalid-feedback"> Please select a starting size. </div>
         </div>
+        <form action="/removeItem" method="post">
+            <input type="hidden" th:value="${subscription.id}" name="title">
+            <input type="submit" value="Remove">
+        </form>
     </div>
 
     <div class="row">
