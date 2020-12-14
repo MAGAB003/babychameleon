@@ -3,10 +3,11 @@ package com.example.babychameleon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -65,4 +66,22 @@ public class BabyChameleonController {
     public String checkout() {
         return "checkout";
     }
+
+
+    @PostMapping("/checkout")
+    public String addSubscriptions(@RequestParam long id, HttpSession session) {
+
+        Subscription subscription = subscriptionRepository.findById(id).get();
+        List<Subscription> subscriptionCart =  (List) session.getAttribute("subscriptionCart");
+        if (subscriptionCart == null) {
+        //    session.setAttribute("sum", 0);
+            subscriptionCart = new ArrayList<>();
+            session.setAttribute("subscriptionCart", subscriptionCart);
+        }
+        //  Om vi vill vi hämta summan?
+        //   session.setAttribute("sum", (Integer) session.getAttribute("sum") + subscription.getPrice());
+        subscriptionCart.add(subscription);
+            return "checkout";
+    }
+
 }
