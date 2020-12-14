@@ -122,6 +122,21 @@ public class BabyChameleonController {
             return "checkout";
     }
 
+    @PostMapping("/removeSubscription")
+    String removeItem(HttpSession session, @RequestParam long id) {
+        List<Subscription> subscriptionCart = (List) session.getAttribute("subscriptionCart");
+        if (subscriptionCart != null) {
+            for (Subscription subscription : subscriptionCart) {
+                if (subscription.getId().equals(id)) {
+                    subscriptionCart.remove(subscription);
+             //       session.setAttribute("sum", (Integer) session.getAttribute("sum") - subscription.getPrice());
+                    break;
+                }
+            }
+        }
+        return "redirect:/checkout";
+    }
+
 
 
 }
