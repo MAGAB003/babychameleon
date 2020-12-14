@@ -1,10 +1,12 @@
 package com.example.babychameleon;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
@@ -17,6 +19,10 @@ public class BabyChameleonController {
     private SubscriptionRepository subscriptionRepository;
     @Autowired
     private CustomerRepository customerRepository;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    PasswordEncoder encoder;
 
     @GetMapping
     public String home() {
@@ -82,4 +88,17 @@ public class BabyChameleonController {
     public String checkout() {
         return "checkout";
     }
+
+    @GetMapping("/addnewcustomer")
+    public String addnewcustomer(@RequestParam String email, String password) {
+        User user = userRepository.findByUsername(email);
+        if (user == null) {
+            user = new User();
+            user.setUsername(email);
+            user.setPassword(encoder.encode(password));
+            userRepository.save(user);
+        }
+        return "ok";
+    }
 }
+

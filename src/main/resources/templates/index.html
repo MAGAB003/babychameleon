@@ -39,12 +39,15 @@
                                                          href="#about">How does it work</a></li>
                     <li class="nav-item mx-0 mx-lg-1 dropdown"><a class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle"
                                                          href="#login" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
-                        Log in</a>
+                        Sign in</a>
                         <div class="dropdown-menu dropdown-menu-right p-3" >
-                            <form class="form-horizontal" method="post" accept-charset="UTF-8">
-                                <input class="form-control login" type="text" name="email" placeholder="E-Mail" style="width:300px"><br>
+                            <div th:if="${param.error}">
+                                Invalid username and password.
+                            </div>
+                            <form th:action="@{/login}" class="form-horizontal" method="post" accept-charset="UTF-8">
+                                <input class="form-control login" type="text" name="username" placeholder="E-Mail" style="width:300px"><br>
                                 <input class="form-control login" type="password" name="password" placeholder="Password" style="width:300px"><br>
-                                <input class="btn btn-primary" type="submit" name="submit" value="Log in">
+                                <input class="btn btn-primary" type="submit" name="submit" value="Sign in">
                             </form>
                         </li>
                     </div>
