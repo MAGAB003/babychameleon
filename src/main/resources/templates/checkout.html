@@ -70,7 +70,7 @@
             </select>
             <div class="invalid-feedback"> Please provide a selected package. </div>
         </div>
-        <div class="col-md-3 mb-3">
+        <div class="col-md-2 mb-3">
             <label for="size">Starting size</label>
             <select class="custom-select d-block w-100" id="size" required="">
                 <option value="">Choose...</option>
@@ -81,10 +81,13 @@
             </select>
             <div class="invalid-feedback"> Please select a starting size. </div>
         </div>
-        <form action="/removeItem" method="post">
-            <input type="hidden" th:value="${subscription.id}" name="title">
-            <input type="submit" value="Remove">
-        </form>
+        <div class="col-md-1 mb-3">
+            <label>&nbsp;</label>
+            <form action="/removeItem" method="post">
+                <input type="hidden" th:value="${subscription.id}" name="title">
+                <button class="btn btn-outline-danger btn-lg btn-block" type="submit" title="Remove"><b class="fas fa-times"></b></button>
+            </form>
+        </div>
     </div>
 
     <div class="row">
