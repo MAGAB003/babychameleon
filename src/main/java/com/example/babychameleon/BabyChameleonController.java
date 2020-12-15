@@ -104,7 +104,7 @@ public class BabyChameleonController {
     }
 
     @GetMapping("/checkout")
-    public String checkout(@RequestParam(required = false, defaultValue = "0") int delete, HttpSession session) {
+    public String checkout(@RequestParam(required = false, defaultValue = "-1") int delete, HttpSession session) {
         Cart cart = (Cart) session.getAttribute("cart");
         if (delete>-1){
             cart.removeItem(delete);
