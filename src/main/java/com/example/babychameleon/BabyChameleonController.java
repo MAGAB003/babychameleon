@@ -40,10 +40,6 @@ public class BabyChameleonController {
         return "aboutservice";
     }
 
-    @GetMapping("/subscriptiondetails")
-    public String subscription() {
-        return "subscriptiondetails";
-    }
 
     @GetMapping("/subscriptions")
     public String subscriptions(Model model) {
@@ -136,7 +132,6 @@ public class BabyChameleonController {
             for (Subscription subscription : subscriptionCart) {
                 if (subscription.getId().equals(id)) {
                     subscriptionCart.remove(subscription);
-             //       session.setAttribute("sum", (Integer) session.getAttribute("sum") - subscription.getPrice());
                     break;
                 }
             }
