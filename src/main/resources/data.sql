@@ -5,3 +5,5 @@ INSERT INTO Customer (First_Name, Last_Name, Email, Street_Address, Postal_Code,
 INSERT INTO Customer (First_Name, Last_Name, Email, Street_Address, Postal_Code, City, Country) VALUES ('Anton', 'Svensson', 'anton@svensson.se', 'Katthult', '577 94', ' Lönneberga', 'Sweden');
 
 INSERT INTO Child (Name, Birthdate, Wears_Dress, Favorite_Color, ParentID, SubscriptionID) VALUES ('Emil', '2014-12-14', 0, 'Blue', (SELECT id FROM Customer WHERE First_Name='Anton' AND Last_Name='Svensson'), (SELECT id FROM Subscription WHERE Name='Small package'));
+
+INSERT INTO BabyChameleonUser (Username, Password) VALUES ('user', '$2a$11$8It8N/w53Kb9vm.BlsA2i.Rfwit5KsIyJ.YD5I8oHHcdApF1c5EXS');
