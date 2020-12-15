@@ -8,11 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.client.RestTemplate;
 
-import javax.persistence.Column;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -110,19 +107,15 @@ public class BabyChameleonController {
     }
 
   @PostMapping("/checkout")
-    public String addSubscriptions(@RequestParam long id, HttpSession session) {
-
+    public String addSubscriptions(@RequestParam long id, @RequestParam (required = false, defaultValue = "false") boolean delete, HttpSession session) {
         Subscription subscription = subscriptionRepository.findById(id).get();
-        List<Subscription> subscriptionCart =  (List) session.getAttribute("subscriptionCart");
-        if (subscriptionCart == null) {
-        //    session.setAttribute("sum", 0);
-            subscriptionCart = new ArrayList<>();
-            session.setAttribute("subscriptionCart", subscriptionCart);
+        SubscriptionCart cart = (SubscriptionCart) session.getAttribute("subscriptionCart");
+        if (cart == null){
+            cart = new SubscriptionCart();
+            session.setAttribute("subscriptionCart", cart);
         }
-        //  Om vi vill vi hämta summan?
-        //   session.setAttribute("sum", (Integer) session.getAttribute("sum") + subscription.getPrice());
-        subscriptionCart.add(subscription);
-            return "checkout";
+        cart.addToCart(subscription);
+        return "checkout";
     }
 
     @PostMapping("/removeSubscription")

@@ -36,7 +36,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
      public void configure(WebSecurity web) throws Exception {
          web
                  .ignoring()
-                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/img/**", "/icon/**");
+                 .antMatchers("/resources/**", "/removeItem", "/static/**", "/css/**", "/js/**", "/img/**", "/icon/**");
      }
 
      @Bean

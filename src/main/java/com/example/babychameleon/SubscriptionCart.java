@@ -4,22 +4,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SubscriptionCart {
-    private List<Subscription> cart = new ArrayList<>();
 
+    protected List<Subscription> cart = new ArrayList<>();
 
     public SubscriptionCart() {
     }
 
-    public SubscriptionCart(List<Subscription> sessioncart) {
-        this.cart = cart;
+    public SubscriptionCart(List<Subscription> cart) {
+        this.cart = this.cart;
     }
 
     public List<Subscription> getCart() {
         return cart;
     }
 
-    public void setCart(List<Subscription> sessioncart) {
-        this.cart = sessioncart;
+    public void setCart(List<Subscription> cart) {
+        this.cart = cart;
     }
 
     public int calculateSum(){
@@ -36,7 +36,7 @@ public class SubscriptionCart {
         }cart.add(subscription);
     }
 
-    public void removeItem(Subscription subscription) {
-        cart.remove(subscription);
+    public void removeItem(int id) {
+        cart.remove(id);
     }
 }

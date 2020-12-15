@@ -25,13 +25,8 @@
 <body>
 <div th:replace="index :: topbar"></div>
 
-
-
 <section class="page-section first-section">
     <div class="container">
-
-
-
         <div class="py-5 text-center">
             <h2>Checkout</h2>
             <p class="lead">Please choose and verify your orders</p>
@@ -48,15 +43,16 @@
             </div>
         </div>
 
-<form class="needs-validation" novalidate="" >
-    <div class="row" th:each="subscription : ${session?.subscriptionCart}">
+<form class="needs-validation" novalidate="" th:if="${session.subscriptionCart != null}">
+    <div class="row" th:each="subscription : ${session.subscriptionCart.cart}">
         <div class="col-md-3 mb-3">
                 <label for="firstName">Child's first name</label>
                 <input type="text" class="form-control" id="childFirstName" placeholder="" value="" required="">
                 <div class="invalid-feedback"> A name is required. </div>
         </div>
         <div class="col-md-3 mb-3">
-            <div class="form-group"> <!-- Date input -->
+            <div class="form-group">
+                <!--  Date input -->
                 <label class="control-label" for="birthdate">Birth date</label>
                 <input class="form-control" id="birthdate" name="date" placeholder="MM/DD/YYY" type="text"/>
             </div>
@@ -83,10 +79,7 @@
         </div>
         <div class="col-md-1 mb-3">
             <label>&nbsp;</label>
-            <form action="/removeItem" method="post">
-                <input type="hidden" th:value="${subscription.id}" name="title">
-                <button class="btn btn-outline-danger btn-lg btn-block" type="submit" title="Remove"><b class="fas fa-times"></b></button>
-            </form>
+            <a class="btn btn-outline-danger btn-lg btn-block" th:href="/checkout(id=${subscription.id},delete=true)}" title="Remove"><b class="fas fa-times"></b></a>
         </div>
     </div>
 
@@ -191,15 +184,15 @@
             </div>
         </div>
       </div>
-</section>
+</section>-->
 
-<div th:replace="index :: bottombar"></div>
+<!--<div th:replace="index :: bottombar"></div>
 <div th:replace="index :: scripts"></div>
 
 <script th:src="@{/js/checkout.js}" src="../static/js/checkout.js"></script>
-<!--  jQuery Date-Picker-->
+&lt;!&ndash;  jQuery Date-Picker&ndash;&gt;
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<!-- Bootstrap Date-Picker Plugin -->
+&lt;!&ndash; Bootstrap Date-Picker Plugin &ndash;&gt;
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 <script>
     $(document).ready(function(){
@@ -213,6 +206,6 @@
       };
       date_input.datepicker(options);
     })
-</script>
+</script>-->
 </body>
 </html>
