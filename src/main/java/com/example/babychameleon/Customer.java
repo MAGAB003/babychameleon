@@ -1,6 +1,7 @@
 package com.example.babychameleon;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,8 +27,11 @@ public class Customer {
     private String cardExpirationDate;
     @Column(name = "Cvv_Code")
     private String cvvCode;
-    @OneToMany(mappedBy = "parent")
-    private List<Child> children;
+    @OneToMany(mappedBy = "parent",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true,
+            fetch = FetchType.EAGER)
+    private List<Child> children = new ArrayList<>();
 
     public Customer() {
     }
@@ -143,5 +147,15 @@ public class Customer {
 
     public void setChildren(List<Child> children) {
         this.children = children;
+    }
+
+    public void addChild(Child child) {
+        child.setParent(this);
+        children.add(child);
+    }
+
+    public void removeChild(Child child) {
+        child.setParent(null);
+        children.remove(child);
     }
 }

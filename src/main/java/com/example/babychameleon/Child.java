@@ -15,15 +15,14 @@ public class Child {
     private boolean wearsDress;
     @Column(name = "Favorite_Color")
     private String favoriteColor;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="ParentID")
+    @ManyToOne(fetch = FetchType.LAZY) // This means that the relationship won't be loaded right away, but only when and if actually needed.
+    @JoinColumn(name = "ParentID")
     private Customer parent;
 
     public Child() {
     }
 
-    public Child(Long id, String name, LocalDate date, boolean wearsDress, String favoriteColor) {
-        this.id = id;
+    public Child(String name, LocalDate date, boolean wearsDress, String favoriteColor) {
         this.name = name;
         this.birthdate = date;
         this.wearsDress = wearsDress;
@@ -77,5 +76,4 @@ public class Child {
     public void setParent(Customer parent) {
         this.parent = parent;
     }
-
 }
