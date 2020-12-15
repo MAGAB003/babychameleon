@@ -47,8 +47,8 @@ public class BabyChameleonController {
 
     @GetMapping("/subscription/{id}")
     public String getSubscription(Model model, @PathVariable Long id) {
-            Subscription subscription = subscriptionRepository.findById(id).get();
-            model.addAttribute("subscription", subscription);
+        Subscription subscription = subscriptionRepository.findById(id).get();
+        model.addAttribute("subscription", subscription);
         return "subscriptiondetails";
     }
 
@@ -78,14 +78,11 @@ public class BabyChameleonController {
 
     @GetMapping("/h2testCustomer")
     public String h2testCustomer(Model model) {
-        List<Customer> customers = (List<Customer>)customerRepository.findAll();
+        List<Customer> customers = (List<Customer>) customerRepository.findAll();
         model.addAttribute("customers", customers);
-        return "h2test"; }
-
-    @GetMapping("/checkout")
-    public String checkout() {
-        return "checkout";
+        return "h2test";
     }
+
 
     @GetMapping("/addnewcustomer")
     public String addnewcustomer() {
@@ -106,30 +103,26 @@ public class BabyChameleonController {
         return "index";
     }
 
-  @PostMapping("/checkout")
-    public String addSubscriptions(@RequestParam long id, @RequestParam (required = false, defaultValue = "false") boolean delete, HttpSession session) {
-        Subscription subscription = subscriptionRepository.findById(id).get();
-        SubscriptionCart cart = (SubscriptionCart) session.getAttribute("subscriptionCart");
-        if (cart == null){
-            cart = new SubscriptionCart();
-            session.setAttribute("subscriptionCart", cart);
+    @GetMapping("/checkout")
+    public String checkout(@RequestParam(required = false, defaultValue = "0") int delete, HttpSession session) {
+        Cart cart = (Cart) session.getAttribute("cart");
+        if (delete>-1){
+            cart.removeItem(delete);
         }
-        cart.addToCart(subscription);
         return "checkout";
     }
 
-    @PostMapping("/removeSubscription")
-    String removeItem(HttpSession session, @RequestParam long id) {
-        List<Subscription> subscriptionCart = (List) session.getAttribute("subscriptionCart");
-        if (subscriptionCart != null) {
-            for (Subscription subscription : subscriptionCart) {
-                if (subscription.getId().equals(id)) {
-                    subscriptionCart.remove(subscription);
-                    break;
-                }
-            }
+    @PostMapping("/checkout")
+    public String addSubscriptions(@RequestParam long id, HttpSession session) {
+        Subscription subscription = subscriptionRepository.findById(id).get();
+        Cart cart = (Cart) session.getAttribute("cart");
+        if (cart == null) {
+            cart = new Cart();
+            session.setAttribute("cart", cart);
         }
-        return "redirect:/checkout";
+        Child child = new Child(subscription);
+        cart.addToCart(child);
+        return "checkout";
     }
 
 }
