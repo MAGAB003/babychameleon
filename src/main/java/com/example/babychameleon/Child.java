@@ -83,4 +83,12 @@ public class Child {
     public void setParent(Customer parent) {
         this.parent = parent;
     }
+
+    public Subscription getSubscription() {
+        return subscription;
+    }
+
+    public void setSubscription(Subscription subscription) {
+        this.subscription = subscription;
+    }
 }
