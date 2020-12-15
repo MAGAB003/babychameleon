@@ -42,8 +42,9 @@
                     <li class="nav-item mx-0 mx-lg-1 dropdown"><a class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle"
                                                          href="#login" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
 
-                        <span th:if="${#httpServletRequest.remoteUser==null}">Sign in </span> <span th:if="${#httpServletRequest.remoteUser!=null}"  th:text="${#httpServletRequest.remoteUser}">
+                        <span th:if="${#httpServletRequest.remoteUser==null}">Sign in </span> <span th:if="${#httpServletRequest.remoteUser!=null}"  class="fa fa-user">
                         </span> </a>
+
 
                         <div class="dropdown-menu dropdown-menu-right p-3" >
 
@@ -58,8 +59,9 @@
                             </form>
                             </span>
                          <span th:if="${#httpServletRequest.remoteUser!=null}">
-                            <a
-                               href="/mysubscriptions" text >My subscsriptions</a>
+                            <a class="form-horizontal" style="width:300px"
+                               href="/mysubscriptions" text > My subscriptions <br></a>
+                             <br>
                             <form th:action="@{/logout}" class="form-horizontal" method="post" accept-charset="UTF-8">
                             <input class="btn btn-primary" type="submit" value="Sign out" style="width:300px"/>
                         </form>
