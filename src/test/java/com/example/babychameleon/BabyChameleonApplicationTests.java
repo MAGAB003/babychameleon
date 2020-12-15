@@ -12,10 +12,10 @@ class BabyChameleonApplicationTests {
 	}
 
 	@Test public void calculateSubscriptionSum(){
-		SubscriptionCart cart = new SubscriptionCart();
-		cart.addToCart(new Subscription("Name1", "Description1", "Img1", "Img2", "Img3", "Img4", "AgeGroup", "Theme", 299));
-		cart.addToCart(new Subscription("Name2", "Description2", "Img1", "Img2", "Img3", "Img4", "AgeGroup", "Theme", 100));
-		Assert.assertEquals(399, cart.calculateSum());
+		Cart cart = new Cart();
+		Subscription subscription = new Subscription("Name1", "Description1", "Img1", "Img2", "Img3", "Img4", "AgeGroup", "Theme", 299);
+		cart.addToCart(new Child(subscription));
+		Assert.assertEquals(299, cart.calculateSum());
 	}
 
 }
