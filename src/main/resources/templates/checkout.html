@@ -43,8 +43,8 @@
             </div>
         </div>
 
-<form class="needs-validation" novalidate="" th:if="${session.subscriptionCart != null}">
-    <div class="row" th:each="subscription : ${session.subscriptionCart.cart}">
+<form class="needs-validation" novalidate="" th:if="${session.cart != null}">
+    <div class="row" th:each="child,iter : ${session.cart.cartItems}">
         <div class="col-md-3 mb-3">
                 <label for="firstName">Child's first name</label>
                 <input type="text" class="form-control" id="childFirstName" placeholder="" value="" required="">
@@ -60,7 +60,7 @@
         <div class="col-md-3 mb-3">
             <label for="package">Package</label>
             <select class="custom-select d-block w-100" id="package" required="">
-                <option th:text="${subscription.name}"></option>
+                <option th:text="${child.subscription.name}"></option>
                 <option>Complete</option>
                 <option>Small</option>
             </select>
@@ -79,7 +79,7 @@
         </div>
         <div class="col-md-1 mb-3">
             <label>&nbsp;</label>
-            <a class="btn btn-outline-danger btn-lg btn-block" th:href="/checkout(id=${subscription.id},delete=true)}" title="Remove"><b class="fas fa-times"></b></a>
+            <a class="btn btn-outline-danger btn-lg btn-block" th:href="@{/checkout(delete=${iter.index})}" title="Remove"><b class="fas fa-times"></b></a>
         </div>
     </div>
 
