@@ -18,8 +18,15 @@ public class Child {
     @ManyToOne(fetch = FetchType.LAZY) // This means that the relationship won't be loaded right away, but only when and if actually needed.
     @JoinColumn(name = "ParentID")
     private Customer parent;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "SubscriptionID")
+    private Subscription subscription;
 
     public Child() {
+    }
+
+    public Child(Subscription subscription) {
+        this.subscription = subscription;
     }
 
     public Child(String name, LocalDate date, boolean wearsDress, String favoriteColor) {
@@ -75,5 +82,13 @@ public class Child {
 
     public void setParent(Customer parent) {
         this.parent = parent;
+    }
+
+    public Subscription getSubscription() {
+        return subscription;
+    }
+
+    public void setSubscription(Subscription subscription) {
+        this.subscription = subscription;
     }
 }
