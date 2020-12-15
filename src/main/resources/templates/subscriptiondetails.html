@@ -26,23 +26,21 @@
             <hr class="featurette-divider">
             <div class="row featurette">
                 <div class="col-md-7">
-                    <h2 class="featurette-heading" th:text="${subscription.name}"></h2>
+                    <h3 class="featurette-heading" th:text="${subscription.name}"></h3>
                     <p class="lead" th:text="${subscription.description}"></p>
-                    <div class="price" th:text="${subscription.price}+ ' SEK / Month'"> </div>
+                    <h3 class="price" th:text="${subscription.price}+ ' SEK / Month'"></h3>
                     <br>
                     <div class="d-flex justify-content-between align-items-center">
                         <p class="subscription_button">
                         <form action="/checkout" method="post">
-                        <input type="hidden" th:value="${subscription.id}" name="id">
-                        <button type="submit" class="btn btn-outline-success" th:href="@{/checkout}" href="/checkout">Subscribe</button>
+                            <input type="hidden" th:value="${subscription.id}" name="id">
+                            <button type="submit" class="btn btn-primary btn-lg btn-block" th:href="@{/checkout}"
+                                    href="/checkout">Subscribe
+                            </button>
                         </form>
                         </p>
                     </div>
                 </div>
-
-
-
-
 
                 <!-- Carousel-->
                 <div class="carousel slide col-md-5" data-ride="carousel" id="carouselExampleControls">
@@ -73,8 +71,6 @@
                     </a>
                 </div>
             </div>
-
-
             <hr class="featurette-divider">
         </div>
     </div>
