@@ -51,11 +51,14 @@
                         <p class="card-title" th:text="${subscription.ageGroup + ' - ' + subscription.name}"></p>
                         <p class="card-text" th:text="${subscription.description}">
                         </p>
-                        <div class="d-flex justify-content-between align-items-center">
+                        <div class="d-flex justify-content-between">
                             <p class="subscription_button">
                                 <a type="button" class="btn btn-outline-secondary" th:href="@{'/subscription/'+${subscription.Id}}" href="..'/subscription/'+${subscription.Id}">Read
                                     more</a>
-                                <a type="button" class="btn btn-outline-success" th:href="@{checkout}" href="../checkout">Subscribe</a>
+                            <form action="/checkout" method="post">
+                                <input type="hidden" th:value="${subscription.id}" name="id">
+                                <button type="submit" class="btn btn-outline-success" th:href="@{/checkout}" href="/checkout">Subscribe</button>
+                            </form>
                             </p>
                         </div>
                        <div class="price" th:text="${subscription.price}+ ' SEK / Month'"> </div>
