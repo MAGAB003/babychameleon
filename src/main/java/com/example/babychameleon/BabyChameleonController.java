@@ -6,9 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
+import javax.persistence.Column;
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -36,10 +40,6 @@ public class BabyChameleonController {
         return "aboutservice";
     }
 
-    @GetMapping("/subscriptiondetails")
-    public String subscription() {
-        return "subscriptiondetails";
-    }
 
     @GetMapping("/subscriptions")
     public String subscriptions(Model model) {
@@ -91,15 +91,53 @@ public class BabyChameleonController {
     }
 
     @GetMapping("/addnewcustomer")
-    public String addnewcustomer(@RequestParam String email, String password) {
+    public String addnewcustomer() {
+        return "addNewCustomer";
+    }
+
+    @PostMapping("/addnewcustomer")
+    public String addnewcustomer(@RequestParam String email, String password, String firstName, String lastName, String streetAddress, String postalCode, String city, String country) {
         User user = userRepository.findByUsername(email);
+
         if (user == null) {
-            user = new User();
-            user.setUsername(email);
-            user.setPassword(encoder.encode(password));
+            Customer customer = new Customer(firstName, lastName, email, streetAddress, postalCode, city, country);
+            customerRepository.save(customer);
+
+            user = new User(email, encoder.encode(password), customer.getId());
             userRepository.save(user);
         }
-        return "ok";
+        return "index";
     }
+
+  @PostMapping("/checkout")
+    public String addSubscriptions(@RequestParam long id, HttpSession session) {
+
+        Subscription subscription = subscriptionRepository.findById(id).get();
+        List<Subscription> subscriptionCart =  (List) session.getAttribute("subscriptionCart");
+        if (subscriptionCart == null) {
+        //    session.setAttribute("sum", 0);
+            subscriptionCart = new ArrayList<>();
+            session.setAttribute("subscriptionCart", subscriptionCart);
+        }
+        //  Om vi vill vi hämta summan?
+        //   session.setAttribute("sum", (Integer) session.getAttribute("sum") + subscription.getPrice());
+        subscriptionCart.add(subscription);
+            return "checkout";
+    }
+
+    @PostMapping("/removeSubscription")
+    String removeItem(HttpSession session, @RequestParam long id) {
+        List<Subscription> subscriptionCart = (List) session.getAttribute("subscriptionCart");
+        if (subscriptionCart != null) {
+            for (Subscription subscription : subscriptionCart) {
+                if (subscription.getId().equals(id)) {
+                    subscriptionCart.remove(subscription);
+                    break;
+                }
+            }
+        }
+        return "redirect:/checkout";
+    }
+
 }
 

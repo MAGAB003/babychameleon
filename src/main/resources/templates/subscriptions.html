@@ -33,12 +33,13 @@
     </div>
 </header>
 <div class="d-flex align-items-center flex-column">
-    <div id="myBtnContainer">
+    <div><br></div>
+    <!--<div id="myBtnContainer">
         <button class="btn btn-light" onclick="filterSelection('newborn')">Newborn</button>
         <button class="btn btn-light" onclick="filterSelection('baby')">Baby</button>
         <button class="btn btn-light" onclick="filterSelection('kids')">Kids</button>
         <button class="btn btn-light active" onclick="filterSelection('all')">View all</button>
-    </div>
+    </div>-->
     <div class="container">
         <div class="row">
             <div th:each="subscription : ${subscriptions}" class="filterDiv ${subscription.ageGroup} col-md-4">

@@ -10,6 +10,18 @@ public class User {
     private Long id;
     private String username;
     private String password;
+    private Long customerID;
+    private Long AdminID;
+
+    public User(){
+
+    }
+    public User(String username, String password, Long customerID) {
+        this.username = username;
+        this.password = password;
+        this.customerID = customerID;
+    }
+
     public Long getId() {
         return id;
     }
@@ -28,4 +40,8 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    public Long getCustomerID() { return customerID; }
+    public void setCustomerID(Long customerID) { this.customerID = customerID; }
+    public Long getAdminID() { return AdminID; }
+    public void setAdminID(Long adminID) { AdminID = adminID; }
 }
