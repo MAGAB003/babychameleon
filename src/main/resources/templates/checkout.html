@@ -66,10 +66,18 @@
                     <label for="size">Starting size</label>
                     <select class="custom-select d-block w-100" id="size" required="">
                         <option value="">Choose...</option>
+                        <option>50</option>
+                        <option>56</option>
+                        <option>62</option>
+                        <option>68</option>
+                        <option>74</option>
+                        <option>80</option>
+                        <option>86</option>
                         <option>92</option>
-                        <option>96</option>
-                        <option>104</option>
-                        <option>110</option>
+                        <option>98-104</option>
+                        <option>110/116</option>
+                        <option>122/138</option>
+                        <option>134/140</option>
                     </select>
                     <div class="invalid-feedback"> Please select a starting size.</div>
                 </div>
@@ -171,7 +179,7 @@
                 </div>
             </div>
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+            <a type="button" class="btn btn-primary btn-lg btn-block" th:href="@{/confirmation}" href="/confirmation" >Confirm</a>
         </form>
     </div>
     </div>
