@@ -29,5 +29,10 @@ public class SubscriptionRepositoryTests {
         Assert.assertArrayEquals(expectedOutput, subscription.getSizeRange("KIDS"));
     }
 
-
+    @Test
+    public void testGetOneSizeRangeArrayForAgeGroupKIDS() {
+        Subscription subscription = new Subscription("Name1", "Description1", "Img1", "Img2", "Img3", "Img4", "KIDS", "Theme", 99);
+        String[] availableSizeRange = subscription.getSizeRange("KIDS");
+        Assert.assertEquals("92", availableSizeRange[0]);
+    }
 }
