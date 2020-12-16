@@ -140,6 +140,12 @@ public class BabyChameleonController {
         return "checkout";
     }
 
+    @GetMapping("/confirmation")
+    public String confirmation() {
+        return "confirmation";
+    }
+
+
     @PostMapping("/checkout")
     public String checkoutPost(@ModelAttribute Customer customer) {
         return "checkout";
