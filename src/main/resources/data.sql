@@ -18,6 +18,7 @@ INSERT INTO Subscription (Name, Description, Img1, Img2, Img3, Img4, Age_Group, 
 
 INSERT INTO Customer (First_Name, Last_Name, Email, Street_Address, Postal_Code, City, Country) VALUES ('Pippi', 'Långstrump', 'pippi@langstrump.com', 'Villavillekullavägen 2', '11111', 'LindgrenCity', 'Sweden');
 INSERT INTO Customer (First_Name, Last_Name, Email, Street_Address, Postal_Code, City, Country) VALUES ('Anton', 'Svensson', 'anton@svensson.se', 'Katthult', '577 94', ' Lönneberga', 'Sweden');
+INSERT INTO Customer (First_Name, Last_Name, Email, Street_Address, Postal_Code, City, Country) VALUES ('Test', 'User', 'user', 'Test street 1', '12345', 'Test City', 'Sweden');
 
 INSERT INTO Child (Name, Birthdate, Wears_Dress, Favorite_Color, ParentID, SubscriptionID) VALUES ('Emil', '2014-12-14', 0, 'Blue', (SELECT id FROM Customer WHERE First_Name='Anton' AND Last_Name='Svensson'), (SELECT id FROM Subscription WHERE Name='Small package'));
 
