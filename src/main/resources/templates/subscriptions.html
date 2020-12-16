@@ -75,7 +75,7 @@
 
 <div th:replace="index :: bottombar"></div>
 <div th:replace="index :: scripts"></div>
-<script src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
+<<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
 <script th:src="@{/js/subscriptions.js}" src="../static/js/subscriptions.js"></script>
 
 <script>
