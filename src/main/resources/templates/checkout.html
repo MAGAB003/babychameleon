@@ -58,8 +58,7 @@
                     <label for="package">Package</label>
                     <select class="custom-select d-block w-100" id="package" required="">
                         <!--<option th:text="${child.subscription.name}"></option>-->
-                        <option>Complete</option>
-                        <option>Small</option>
+                        <option th:each="subscription : ${subscriptionslist}" th:value="${subscription.id}" th:text="|${subscription.ageGroup} - ${subscription.name}|"></option>
                     </select>
                     <div class="invalid-feedback"> Please provide a selected package.</div>
                 </div>
