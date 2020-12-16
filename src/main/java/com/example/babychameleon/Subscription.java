@@ -13,7 +13,7 @@ public class Subscription {
     private String img2;
     private String img3;
     private String img4;
-    @Column(name="Age_Group")
+    @Column(name = "Age_Group")
     private String ageGroup;
     private String theme;
     private int price;
@@ -21,16 +21,16 @@ public class Subscription {
     public Subscription() {
     }
 
-    public Subscription(String name, String description, String img1, String img2, String img3, String img4, String ageGroup, String theme, int price){
-    this.name =name;
-    this.description=description;
-    this.img1=img1;
-    this.img2=img2;
-    this.img3=img3;
-    this.img4=img4;
-    this.ageGroup=ageGroup;
-    this.theme=theme;
-    this.price=price;
+    public Subscription(String name, String description, String img1, String img2, String img3, String img4, String ageGroup, String theme, int price) {
+        this.name = name;
+        this.description = description;
+        this.img1 = img1;
+        this.img2 = img2;
+        this.img3 = img3;
+        this.img4 = img4;
+        this.ageGroup = ageGroup;
+        this.theme = theme;
+        this.price = price;
     }
 
     public Long getId() {
@@ -111,6 +111,24 @@ public class Subscription {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public String[] getSizeRange(String ageGroup) {
+        String[] sizeRanges;
+        switch (ageGroup) {
+            case "NEWBORN":
+                sizeRanges = new String[]{"50", "56", "62", "68", "74", "80", "86", "92"};
+                break;
+            case "BABY":
+                sizeRanges = new String[]{"68", "74", "80", "86", "92", "98", "104"};
+                break;
+            case "KIDS":
+                sizeRanges = new String[]{"92", "98/104", "110/116", "122/138", "134/140"};
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + ageGroup);
+        }
+        return sizeRanges;
     }
 
     @Override
