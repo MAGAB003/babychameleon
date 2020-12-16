@@ -113,6 +113,7 @@ public class BabyChameleonController {
         if (id > 0) {
             Subscription subscription = subscriptionRepository.findById(id).orElse(null);
             if (subscription != null)
+                model.addAttribute("subscription", subscription);
             if (cart == null) {
                 cart = new Cart();
                 session.setAttribute("cart", cart);
