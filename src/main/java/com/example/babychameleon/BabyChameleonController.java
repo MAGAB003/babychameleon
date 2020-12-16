@@ -101,45 +101,45 @@ public class BabyChameleonController {
         return "index";
     }
 
-    @GetMapping("/checkout1")
+    @GetMapping("/checkout")
     public String checkout(@RequestParam(required = false, defaultValue = "0") Long id,
                            @RequestParam(required = false, defaultValue = "-1") int delete,
-                           @ModelAttribute Customer customer,
                            HttpServletRequest request,
-                           HttpSession session) {
+                           HttpSession session,
+                           Model model) {
+        Cart cart = (Cart) session.getAttribute("cart");
+
         if (id > 0) {
             Subscription subscription = subscriptionRepository.findById(id).orElse(null);
-        }
-
-        Cart cart = (Cart) session.getAttribute("cart");
-        if (delete > -1) {
-            cart.removeItem(delete);
-        }
-
-        if (request.getUserPrincipal() != null) {
-            customer = customerRepository.findByEmail(request.getUserPrincipal().getName()).get(0);
-        }
-
-        return "checkout";
-    }
-
-    @GetMapping("/checkout")
-    public String checkout(@RequestParam (required = false, defaultValue = "0") Long id, @RequestParam(required = false, defaultValue = "-1")  int delete, Model model, HttpSession session) {
-        Cart cart = (Cart) session.getAttribute("cart");
-            if (id>0){
-            Subscription subscription = subscriptionRepository.findById(id).get();
-            model.addAttribute(subscription);
+            if (subscription != null)
+                model.addAttribute(subscription);
             if (cart == null) {
                 cart = new Cart();
                 session.setAttribute("cart", cart);
             }
             Child child = new Child(subscription);
             cart.addToCart(child);
+        }
 
-            return "checkout";
-        }if (delete>-1){
+        if (delete > -1) {
             cart.removeItem(delete);
         }
+
+        Customer customer = new Customer();
+        if (request.getUserPrincipal() != null) {
+            //customer = customerRepository.findByEmail(request.getUserPrincipal().getName()).get(0);
+            customer = customerRepository.findByEmail("anton@svensson.se").get(0);
+        }
+        for (Child child : cart.cartItems) {
+            customer.addChild(child);
+        }
+        model.addAttribute("customer", customer);
+
+        return "checkout";
+    }
+
+    @PostMapping("/checkout")
+    public String checkoutPost(@ModelAttribute Customer customer) {
         return "checkout";
     }
 
