@@ -98,7 +98,7 @@ public class BabyChameleonController {
             user = new User(email, encoder.encode(password), customer.getId());
             userRepository.save(user);
         }
-        return "index";
+        return "signIn";
     }
 
     @GetMapping("/checkout")
