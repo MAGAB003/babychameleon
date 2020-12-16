@@ -113,24 +113,6 @@ public class Subscription {
         this.price = price;
     }
 
-    public String[] getSizeRange(String ageGroup) {
-        String[] sizeRanges;
-        switch (ageGroup) {
-            case "NEWBORN":
-                sizeRanges = new String[]{"50", "56", "62", "68", "74", "80", "86", "92"};
-                break;
-            case "BABY":
-                sizeRanges = new String[]{"68", "74", "80", "86", "92", "98", "104"};
-                break;
-            case "KIDS":
-                sizeRanges = new String[]{"92", "98/104", "110/116", "122/138", "134/140"};
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + ageGroup);
-        }
-        return sizeRanges;
-    }
-
     @Override
     public String toString() {
         return "Subscription{" +

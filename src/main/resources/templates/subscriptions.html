@@ -16,6 +16,7 @@
     <link th:href="@{/css/styles.css}" href="../static/css/styles.css" rel="stylesheet"/>
     <!-- Custom styles for this template -->
     <link th:href="@{/css/subscriptions.css}" href=..\static\css\subscriptions.css rel="stylesheet">
+
 </head>
 <body>
 <div th:replace="index :: topbar"></div>
@@ -34,18 +35,18 @@
 </header>
 <div class="d-flex align-items-center flex-column">
     <div><br></div>
-    <!--<div id="myBtnContainer">
-        <button class="btn btn-light" onclick="filterSelection('newborn')">Newborn</button>
-        <button class="btn btn-light" onclick="filterSelection('baby')">Baby</button>
-        <button class="btn btn-light" onclick="filterSelection('kids')">Kids</button>
-        <button class="btn btn-light active" onclick="filterSelection('all')">View all</button>
-    </div>-->
+    <div id="myBtnContainer">
+        <a type="button" class="btn btn-light" id="newborn">Newborn</a>
+        <a type="button" class="btn btn-light" id="baby">Baby</a>
+        <a type="button" class="btn btn-light" id="kids">Kids</a>
+        <a type="button" class="btn btn-light active" id="all">View all</a>
+    </div>
     <div class="container">
         <div class="row">
-            <div th:each="subscription : ${subscriptions}" class="filterDiv ${subscription.ageGroup} col-md-4">
-                <div class="card mb-4 box-shadow">
-                    <!--ADD THIS BELOW WHEN WE HAVE CORRECT IMG IN DB th:src="${subscription.imgId}"-->
-                    <a th:href="@{'/subscription/'+${subscription.Id}}" href="..'/subscription/'+${subscription.Id}"> <img class="card-img-top" th:src="${subscription.img1}"> </a>
+            <div th:each="subscription : ${subscriptions}" class="col-md-4">
+                <div th:class="${subscription.ageGroup}+' card mb-4 box-shadow'">
+                    <a th:href="@{'/subscription/'+${subscription.Id}}" href="..'/subscription/'+${subscription.Id}">
+                        <img class="card-img-top" th:src="${subscription.img1}"> </a>
                     <div class="card-body">
 
                         <p class="card-title" th:text="${subscription.ageGroup + ' - ' + subscription.name}"></p>
@@ -53,13 +54,16 @@
                         </p>
                         <div class="d-flex justify-content-between">
                             <p class="subscription_button">
-                                <a type="button" class="btn btn-outline-secondary" th:href="@{'/subscription/'+${subscription.Id}}" href="..'/subscription/'+${subscription.Id}">Read
+                                <a type="button" class="btn btn-outline-secondary"
+                                   th:href="@{'/subscription/'+${subscription.Id}}"
+                                   href="..'/subscription/'+${subscription.Id}">Read
                                     more</a>
                             <p class="subscription_button">
-                                <a type="button" class="btn btn-outline-primary" th:href="@{/checkout(id=${subscription.id})}" href="/checkout">Subscribe</a>
+                                <a type="button" class="btn btn-outline-primary"
+                                   th:href="@{/checkout(id=${subscription.id})}" href="/checkout">Subscribe</a>
                             </p>
                         </div>
-                       <div class="price" th:text="${subscription.price}+ ' SEK / Month'"> </div>
+                        <div class="price" th:text="${subscription.price}+ ' SEK / Month'"></div>
                     </div>
                 </div>
             </div>
@@ -68,9 +72,44 @@
     </div>
 </div>
 
+
 <div th:replace="index :: bottombar"></div>
 <div th:replace="index :: scripts"></div>
+<<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
 <script th:src="@{/js/subscriptions.js}" src="../static/js/subscriptions.js"></script>
+
+<script>
+    $(document).ready(function()
+{
+  $("#all").click(function(){
+  console.log("ALL SHOULD SHOW");
+    $(".NEWBORN").show();
+    $(".BABY").show();
+    $(".KIDS").show();
+});
+
+  $("#newborn").click(function(){
+    $(".NEWBORN").show();
+    $(".BABY").hide();
+    $(".KIDS").hide();
+  });
+
+  $("#baby").click(function(){
+  $(".NEWBORN").hide();
+    $(".BABY").show();
+    $(".KIDS").hide();
+
+  });
+
+  $("#kids").click(function(){
+    $(".NEWBORN").hide();
+    $(".BABY").hide();
+    $(".KIDS").show();
+
+  });
+ });
+
+</script>
 
 </body>
 </html>

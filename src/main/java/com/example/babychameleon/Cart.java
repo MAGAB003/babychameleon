@@ -40,4 +40,7 @@ public class Cart {
     public void removeItem(int id) {
         cartItems.remove(id);
     }
+
 }
+
+
