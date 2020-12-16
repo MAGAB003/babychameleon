@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:font-size="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -42,18 +42,17 @@
         <a type="button" class="btn btn-light active" id="all">View all</a>
     </div>
     <div class="container">
-        <div class="row">
+        <div class="card-group">
             <div th:each="subscription : ${subscriptions}" class="col-md-4">
                 <div th:class="${subscription.ageGroup}+' card mb-4 box-shadow'">
-                    <a th:href="@{'/subscription/'+${subscription.Id}}" href="..'/subscription/'+${subscription.Id}">
-                        <img class="card-img-top" th:src="${subscription.img1}"> </a>
+                    <a th:href="@{'/subscription/'+${subscription.Id}}"  href="..'/subscription/'+${subscription.Id}">
+                        <img class="card-img-top" th:src="${subscription.img1}" style="height: 420px"> </a>
                     <div class="card-body">
-
-                        <p class="card-title" th:text="${subscription.ageGroup + ' - ' + subscription.name}"></p>
-                        <p class="card-text" th:text="${subscription.description}">
+                        <p class="card-title" th:text="${subscription.ageGroup + ' - ' + subscription.name}" style="height: 75px; font-size: 22px"></p>
+                        <p class="card-text" th:text="${subscription.description}"style="height: 50px">
                         </p>
                         <div class="d-flex justify-content-between">
-                            <p class="subscription_button">
+                            <p class="subscription_button" style="height: 50px">
                                 <a type="button" class="btn btn-outline-secondary"
                                    th:href="@{'/subscription/'+${subscription.Id}}"
                                    href="..'/subscription/'+${subscription.Id}">Read
