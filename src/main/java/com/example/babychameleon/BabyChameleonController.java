@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.List;
 
 
@@ -85,6 +86,22 @@ public class BabyChameleonController {
     @GetMapping("/addnewcustomer")
     public String addnewcustomer() {
         return "addNewCustomer";
+    }
+
+
+
+
+
+    @GetMapping("/mysubscriptions")
+    public String mySubscriptions(HttpServletRequest request, HttpSession session, Model model) {
+        Customer customer = new Customer();
+
+        customer = customerRepository.findByEmail(request.getUserPrincipal().getName()).get(0);
+        List<Child> childrenList = customer.getChildren();
+        session.setAttribute("childrenList", childrenList);
+        session.setAttribute("customer", customer);
+
+        return "mySubscriptions";
     }
 
     @PostMapping("/addnewcustomer")

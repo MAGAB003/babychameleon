@@ -20,6 +20,8 @@ INSERT INTO Customer (First_Name, Last_Name, Email, Street_Address, Postal_Code,
 INSERT INTO Customer (First_Name, Last_Name, Email, Street_Address, Postal_Code, City, Country) VALUES ('Anton', 'Svensson', 'anton@svensson.se', 'Katthult', '577 94', ' Lönneberga', 'Sweden');
 INSERT INTO Customer (First_Name, Last_Name, Email, Street_Address, Postal_Code, City, Country) VALUES ('Test', 'User', 'user', 'Test street 1', '12345', 'Test City', 'Sweden');
 
-INSERT INTO Child (Name, Birthdate, Wears_Dress, Favorite_Color, ParentID, SubscriptionID) VALUES ('Emil', '2014-12-14', 0, 'Blue', (SELECT id FROM Customer WHERE First_Name='Anton' AND Last_Name='Svensson'), (SELECT id FROM Subscription WHERE Name='Small package'));
+INSERT INTO Child (Name, Birthdate, Wears_Dress, Favorite_Color, ParentID, SubscriptionID) VALUES ('Emil', '2014-12-14', 0, 'Blue', (SELECT id FROM Customer WHERE First_Name='Anton' AND Last_Name='Svensson'), 1);
+INSERT INTO Child (Name, Birthdate, Wears_Dress, Favorite_Color, ParentID, SubscriptionID) VALUES ('Ida', '2017-02-04', 0, 'Green', (SELECT id FROM Customer WHERE First_Name='Anton' AND Last_Name='Svensson'), 3);
 
 INSERT INTO BabyChameleonUser (Username, Password) VALUES ('user', '$2a$11$8It8N/w53Kb9vm.BlsA2i.Rfwit5KsIyJ.YD5I8oHHcdApF1c5EXS');
+INSERT INTO BabyChameleonUser (Username, Password, customerID) VALUES ('anton@svensson.se', '$2a$11$8It8N/w53Kb9vm.BlsA2i.Rfwit5KsIyJ.YD5I8oHHcdApF1c5EXS',2);
