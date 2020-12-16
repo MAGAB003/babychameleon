@@ -52,7 +52,8 @@ public class BabyChameleonController {
 
     @GetMapping("/login")
     public String login() {
-        return "index";
+
+        return "signIn";
     }
 
     @GetMapping("/logout")
