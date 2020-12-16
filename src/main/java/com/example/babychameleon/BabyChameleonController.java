@@ -104,24 +104,22 @@ public class BabyChameleonController {
     }
 
     @GetMapping("/checkout")
-    public String checkout(@RequestParam(required = false, defaultValue = "-1") int delete, HttpSession session) {
+    public String checkout(@RequestParam (required = false, defaultValue = "0") Long id, @RequestParam(required = false, defaultValue = "-1")  int delete, Model model, HttpSession session) {
         Cart cart = (Cart) session.getAttribute("cart");
-        if (delete>-1){
+            if (id>0){
+            Subscription subscription = subscriptionRepository.findById(id).get();
+            model.addAttribute(subscription);
+            if (cart == null) {
+                cart = new Cart();
+                session.setAttribute("cart", cart);
+            }
+            Child child = new Child(subscription);
+            cart.addToCart(child);
+
+            return "checkout";
+        }if (delete>-1){
             cart.removeItem(delete);
         }
-        return "checkout";
-    }
-
-    @PostMapping("/checkout")
-    public String addSubscriptions(@RequestParam long id, HttpSession session) {
-        Subscription subscription = subscriptionRepository.findById(id).get();
-        Cart cart = (Cart) session.getAttribute("cart");
-        if (cart == null) {
-            cart = new Cart();
-            session.setAttribute("cart", cart);
-        }
-        Child child = new Child(subscription);
-        cart.addToCart(child);
         return "checkout";
     }
 
