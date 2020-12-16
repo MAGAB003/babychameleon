@@ -40,4 +40,14 @@ public class Cart {
     public void removeItem(int id) {
         cartItems.remove(id);
     }
+
+    public String[] getSizeRangesForChildInCart(Child child){
+        Subscription subscription = child.getSubscription();
+        String ageGroup = subscription.getAgeGroup();
+        String[] sizeRanges = subscription.getSizeRange(ageGroup);
+        return sizeRanges;
+    }
+
 }
+
+
