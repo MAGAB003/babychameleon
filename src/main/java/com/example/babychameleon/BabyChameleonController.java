@@ -4,11 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -54,7 +52,8 @@ public class BabyChameleonController {
 
     @GetMapping("/login")
     public String login() {
-        return "index";
+
+        return "signIn";
     }
 
     @GetMapping("/logout")
@@ -104,22 +103,44 @@ public class BabyChameleonController {
     }
 
     @GetMapping("/checkout")
-    public String checkout(@RequestParam (required = false, defaultValue = "0") Long id, @RequestParam(required = false, defaultValue = "-1")  int delete, Model model, HttpSession session) {
+    public String checkout(@RequestParam(required = false, defaultValue = "0") Long id,
+                           @RequestParam(required = false, defaultValue = "-1") int delete,
+                           HttpServletRequest request,
+                           HttpSession session,
+                           Model model) {
         Cart cart = (Cart) session.getAttribute("cart");
-            if (id>0){
-            Subscription subscription = subscriptionRepository.findById(id).get();
-            model.addAttribute(subscription);
+
+        if (id > 0) {
+            Subscription subscription = subscriptionRepository.findById(id).orElse(null);
+            if (subscription != null)
+                model.addAttribute(subscription);
             if (cart == null) {
                 cart = new Cart();
                 session.setAttribute("cart", cart);
             }
             Child child = new Child(subscription);
             cart.addToCart(child);
+        }
 
-            return "checkout";
-        }if (delete>-1){
+        if (delete > -1) {
             cart.removeItem(delete);
         }
+
+        Customer customer = new Customer();
+        if (request.getUserPrincipal() != null) {
+            //customer = customerRepository.findByEmail(request.getUserPrincipal().getName()).get(0);
+            customer = customerRepository.findByEmail("anton@svensson.se").get(0);
+        }
+        for (Child child : cart.cartItems) {
+            customer.addChild(child);
+        }
+        model.addAttribute("customer", customer);
+
+        return "checkout";
+    }
+
+    @PostMapping("/checkout")
+    public String checkoutPost(@ModelAttribute Customer customer) {
         return "checkout";
     }
 
