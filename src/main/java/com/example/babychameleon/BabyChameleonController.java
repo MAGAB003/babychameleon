@@ -134,6 +134,8 @@ public class BabyChameleonController {
             customer.addChild(child);
         }
         model.addAttribute("customer", customer);
+        model.addAttribute("subscriptionslist", subscriptionRepository.findAll() );
+
 
         return "checkout";
     }
