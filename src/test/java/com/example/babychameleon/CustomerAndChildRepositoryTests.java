@@ -29,9 +29,9 @@ public class CustomerAndChildRepositoryTests {
     @Test
     void testCreateCustomerWithChild() {
         Customer newCustomer = new Customer("Kalle", "Anka", "kalle.anka@ankeborg.com", "Ankgatan 1", "Ankeborg", "12345", "USA");
-        Child newChild1 = new Child("Knatte", LocalDate.of(2010, 10, 10), false, "Red");
-        Child newChild2 = new Child("Fnatte", LocalDate.of(2010, 10, 10), false, "Blue");
-        Child newChild3 = new Child("Tjatte", LocalDate.of(2010, 10, 10), false, "Green");
+        Child newChild1 = new Child("Knatte", "2010-10-10", false, "Red");
+        Child newChild2 = new Child("Fnatte", "2010-10-10", false, "Blue");
+        Child newChild3 = new Child("Tjatte", "2010-10-10", false, "Green");
         newCustomer.addChild(newChild1);
         newCustomer.addChild(newChild2);
         newCustomer.addChild(newChild3);

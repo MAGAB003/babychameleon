@@ -1,7 +1,6 @@
 package com.example.babychameleon;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 public class Child {
@@ -10,7 +9,9 @@ public class Child {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private LocalDate birthdate;
+    private String birthdate;
+    @Column(name = "Starting_Size")
+    private String startingSize;
     @Column(name = "Wears_Dress")
     private boolean wearsDress;
     @Column(name = "Favorite_Color")
@@ -29,7 +30,7 @@ public class Child {
         this.subscription = subscription;
     }
 
-    public Child(String name, LocalDate date, boolean wearsDress, String favoriteColor) {
+    public Child(String name, String date, boolean wearsDress, String favoriteColor) {
         this.name = name;
         this.birthdate = date;
         this.wearsDress = wearsDress;
@@ -52,12 +53,20 @@ public class Child {
         this.name = name;
     }
 
-    public LocalDate getBirthdate() {
+    public String getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(LocalDate birthdate) {
+    public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public String getStartingSize() {
+        return startingSize;
+    }
+
+    public void setStartingSize(String startingSize) {
+        this.startingSize = startingSize;
     }
 
     public boolean isWearsDress() {

@@ -73,7 +73,7 @@ public class Customer {
         return lastName;
     }
 
-    public void setLastName(String customerLastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.security.Principal;
 import java.util.List;
 
 
@@ -159,15 +158,23 @@ public class BabyChameleonController {
         return "checkout";
     }
 
+    @PostMapping("/checkout")
+    public String checkoutPost(@ModelAttribute Customer customer) {
+        Customer origCustomer = customerRepository.findById(customer.getId()).orElse(null);
+        if (origCustomer == null) {
+            return "checkout";
+        }
+        for (int i = 0; i < origCustomer.getChildren().size(); i++) {
+            customer.addChild(origCustomer.getChildren().get(i));
+        }
+        customerRepository.save(customer);
+
+        return "redirect:/confirmation";
+    }
+
     @GetMapping("/confirmation")
     public String confirmation() {
         return "confirmation";
-    }
-
-
-    @PostMapping("/checkout")
-    public String checkoutPost(@ModelAttribute Customer customer) {
-        return "checkout";
     }
 
 }
