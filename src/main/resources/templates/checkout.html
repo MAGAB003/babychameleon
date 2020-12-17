@@ -181,7 +181,7 @@
                 </div>
             </div>
             <hr class="mb-4">
-            <a class="btn btn-primary btn-lg btn-block" th:href="@{/confirmation}" th:disabled="${session.cart == null} or ${session.cart.calculateSum() == 0}">Confirm purchase</a>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" th:disabled="${session.cart == null} or ${session.cart.calculateSum() == 0}">Confirm purchase</button>
         </form>
     </div>
 </section>
