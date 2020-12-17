@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
 import java.util.List;
 
 
@@ -52,7 +53,6 @@ public class BabyChameleonController {
 
     @GetMapping("/login")
     public String login() {
-
         return "signIn";
     }
 
@@ -88,6 +88,22 @@ public class BabyChameleonController {
         return "addNewCustomer";
     }
 
+
+
+
+
+    @GetMapping("/mysubscriptions")
+    public String mySubscriptions(HttpServletRequest request, HttpSession session, Model model) {
+        Customer customer = new Customer();
+
+        customer = customerRepository.findByEmail(request.getUserPrincipal().getName()).get(0);
+        List<Child> childrenList = customer.getChildren();
+        session.setAttribute("childrenList", childrenList);
+        session.setAttribute("customer", customer);
+
+        return "mySubscriptions";
+    }
+
     @PostMapping("/addnewcustomer")
     public String addnewcustomer(@RequestParam String email, String password, String firstName, String lastName, String streetAddress, String postalCode, String city, String country) {
         User user = userRepository.findByUsername(email);
@@ -99,7 +115,7 @@ public class BabyChameleonController {
             user = new User(email, encoder.encode(password), customer.getId());
             userRepository.save(user);
         }
-        return "index";
+        return "signIn";
     }
 
     @GetMapping("/checkout")
@@ -113,7 +129,7 @@ public class BabyChameleonController {
         if (id > 0) {
             Subscription subscription = subscriptionRepository.findById(id).orElse(null);
             if (subscription != null)
-                model.addAttribute(subscription);
+                model.addAttribute("subscription", subscription);
             if (cart == null) {
                 cart = new Cart();
                 session.setAttribute("cart", cart);
@@ -145,6 +161,12 @@ public class BabyChameleonController {
 
         return "checkout";
     }
+
+    @GetMapping("/confirmation")
+    public String confirmation() {
+        return "confirmation";
+    }
+
 
     @PostMapping("/checkout")
     public String checkoutPost(@ModelAttribute Customer customer) {
