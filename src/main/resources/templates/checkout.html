@@ -1,5 +1,3 @@
-</head>
-<body>
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
@@ -30,12 +28,12 @@
     <div class="container">
         <div class="py-5 text-center">
             <h2>Checkout</h2>
-            <p class="lead">Please choose and verify your orders</p>
+            <p class="lead">Please choose and verify your subscriptions</p>
             <hr class="mb-4">
         </div>
 
-        <div class="row" th:if="${session.cart == null}">
-            Please select a <a th:href="@{/subscriptions}">subscription</a> before going to the checkout.
+        <div th:if="${session.cart == null} or ${session.cart.calculateSum() == 0}" class="alert alert-warning" role="alert">
+            Please select a subscription before proceeding with the checkout.
         </div>
 
         <form th:action="@{/checkout}" th:object="${customer}" method="post" class="needs-validation" novalidate
@@ -44,23 +42,27 @@
                 <input th:field="*{children[__${iter.index}__].id}" type="hidden"/>
                 <div class="col-md-3 mb-3">
                     <label for="firstName">Child's first name</label>
-                    <input type="text" class="form-control" th:field="*{children[__${iter.index}__].name}" id="childFirstName" placeholder="" value="" required="">
+                    <input type="text" class="form-control" th:field="*{children[__${iter.index}__].name}"
+                           id="childFirstName" placeholder="" value="" required="">
                     <div class="invalid-feedback"> A name is required.</div>
                 </div>
                 <div class="col-md-3 mb-3">
                     <div class="form-group">
                         <!--  Date input -->
                         <label class="control-label" for="birthdate">Birth date</label>
-                        <input class="form-control" th:field="*{children[__${iter.index}__].birthdate}" id="birthdate" name="date" placeholder="MM/DD/YYY" type="date"/>
+                        <input class="form-control" th:field="*{children[__${iter.index}__].birthdate}" id="birthdate"
+                               name="date" type="date"/>
                     </div>
                 </div>
                 <div class="col-md-3 mb-3">
-                    <label for="package">Package</label>
-                    <select class="custom-select d-block w-100" id="package" required="">
-                        <!--<option th:text="${child.subscription.name}"></option>-->
-                        <option th:each="subscription : ${subscriptionslist}" th:value="${subscription.id}" th:text="|${subscription.ageGroup} - ${subscription.name}|"></option>
+                    <label for="subscription">Subscription</label>
+                    <select class="custom-select d-block w-100" th:field="*{children[__${iter.index}__].subscription}"
+                            id="subscription" required="">
+                        <option value="">Choose...</option>
+                        <option th:each="subscription : ${subscriptionslist}" th:value="${subscription.id}"
+                                th:text="|${subscription.ageGroup} - ${subscription.name}|"></option>
                     </select>
-                    <div class="invalid-feedback"> Please provide a selected package.</div>
+                    <div class="invalid-feedback">Please select a subscription.</div>
                 </div>
                 <div class="col-md-2 mb-3">
                     <label for="size">Starting size</label>
@@ -81,14 +83,6 @@
             </div>
 
             <div class="row">
-                <div class="col-md-3 mb-3">
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">New child..</button>
-                </div>
-            </div>
-
-            <hr class="mb-4">
-
-            <div class="row">
                 <div class="col-md-12 mb-12">
                     <h3 th:text="'Order value: '+${session.cart.calculateSum()+' SEK'}"></h3>
                 </div>
@@ -101,29 +95,34 @@
             <div class="row">
                 <div class="col-md-6 mb-3">
                     <label for="firstName">First name</label>
-                    <input type="text" class="form-control" th:field="*{firstName}" id="firstName" placeholder="" value="" required="">
+                    <input type="text" class="form-control" th:field="*{firstName}" id="firstName" placeholder=""
+                           value="" required="">
                     <div class="invalid-feedback">Valid first name is required.</div>
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="lastName">Last name</label>
-                    <input type="text" class="form-control" th:field="*{lastName}" id="lastName" placeholder="" value="" required="">
+                    <input type="text" class="form-control" th:field="*{lastName}" id="lastName" placeholder="" value=""
+                           required="">
                     <div class="invalid-feedback">Valid last name is required.</div>
                 </div>
             </div>
             <div class="mb-3">
-                <label for="email">Email <span class="text-muted">(Optional)</span></label>
-                <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="you@example.com">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" th:field="*{email}" id="email" placeholder="you@example.com"
+                       required="">
                 <div class="invalid-feedback">Please enter a valid email address for shipping updates.</div>
             </div>
             <div class="mb-3">
                 <label for="address">Address</label>
-                <input type="text" class="form-control" th:field="*{streetAddress}" id="address" placeholder="1234 Main St" required="">
+                <input type="text" class="form-control" th:field="*{streetAddress}" id="address"
+                       placeholder="1234 Main St" required="">
                 <div class="invalid-feedback">Please enter your shipping address.</div>
             </div>
             <div class="row">
                 <div class="col-md-3 mb-3">
                     <label for="zip">Zip</label>
-                    <input type="text" class="form-control" th:field="*{postalCode}" id="zip" placeholder="" required="">
+                    <input type="text" class="form-control" th:field="*{postalCode}" id="zip" placeholder=""
+                           required="">
                     <div class="invalid-feedback">Zip code required.</div>
                 </div>
                 <div class="col-md-8 mb-3">
@@ -154,27 +153,28 @@
                 </div>
                 <div class="col-md-6 mb-3">
                     <label for="cc-number">Credit card number</label>
-                    <input type="text" class="form-control" th:field="*{creditCardNumber}" id="cc-number" placeholder="" required="">
+                    <input type="text" class="form-control" th:field="*{creditCardNumber}" id="cc-number" placeholder=""
+                           required="">
                     <div class="invalid-feedback">Credit card number is required</div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-3 mb-3">
                     <label for="cc-expiration">Expiration</label>
-                    <input type="text" class="form-control" th:field="*{cardExpirationDate}" id="cc-expiration" placeholder="" required="">
-                    <div class="invalid-feedback"> Expiration date required</div>
+                    <input type="text" class="form-control" th:field="*{cardExpirationDate}" id="cc-expiration"
+                           placeholder="" required="">
+                    <div class="invalid-feedback">Expiration date required</div>
                 </div>
                 <div class="col-md-3 mb-3">
                     <label for="cc-cvv">CVV</label>
-                    <input type="text" class="form-control" th:field="*{cvvCode}" id="cc-cvv" placeholder="" required="">
-                    <div class="invalid-feedback"> Security code required</div>
+                    <input type="text" class="form-control" th:field="*{cvvCode}" id="cc-cvv" placeholder=""
+                           required="">
+                    <div class="invalid-feedback">Security code required</div>
                 </div>
             </div>
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+            <button class="btn btn-primary btn-lg btn-block" type="submit" th:disabled="${session.cart == null} or ${session.cart.calculateSum() == 0}">Confirm purchase</button>
         </form>
-    </div>
-    </div>
     </div>
 </section>
 
