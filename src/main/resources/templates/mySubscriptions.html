@@ -108,6 +108,14 @@
                                     <hr />
                                         <div class="row">
                                             <div class="col-sm-3 col-md-2 col-5">
+                                                <label style="font-weight:bold;">Name on card</label>
+                                            </div>
+                                            <div class="col-md-8 col-6" th:text="${session.customer.nameOnCard}">
+                                            </div>
+                                        </div>
+                                        <hr />
+                                        <div class="row">
+                                            <div class="col-sm-3 col-md-2 col-5">
                                                 <label style="font-weight:bold;">Credit card number</label>
                                             </div>
                                             <div class="col-md-8 col-6" th:text="${session.customer.creditCardNumber}">

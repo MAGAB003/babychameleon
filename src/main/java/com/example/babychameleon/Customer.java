@@ -21,6 +21,8 @@ public class Customer {
     private String postalCode;
     private String city;
     private String country;
+    @Column(name = "Name_On_Card")
+    private String nameOnCard;
     @Column(name = "Credit_Card_Number")
     private String creditCardNumber;
     @Column(name = "Card_Expiration_Date")
@@ -44,6 +46,7 @@ public class Customer {
         this.postalCode = postalCode;
         this.city = city;
         this.country = country;
+        nameOnCard = firstName + " " + lastName;
     }
 
     public Customer(String firstName, String lastName, String customerEmail, String customerStreetAddress, String postalCode, String city, String country, String creditcardNumber, String cardExpirationDate, String cvvCode) {
@@ -115,6 +118,14 @@ public class Customer {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getNameOnCard() {
+        return nameOnCard;
+    }
+
+    public void setNameOnCard(String nameOnCard) {
+        this.nameOnCard = nameOnCard;
     }
 
     public String getCreditCardNumber() {

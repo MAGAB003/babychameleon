@@ -7,6 +7,7 @@ Street_Address VARCHAR(50),
 Postal_Code VARCHAR(50),
 City VARCHAR(50),
 Country VARCHAR(50),
+Name_On_Card VARCHAR(50),
 Credit_Card_Number VARCHAR(50),
 Card_Expiration_Date VARCHAR(50),
 Cvv_Code VARCHAR(50)
