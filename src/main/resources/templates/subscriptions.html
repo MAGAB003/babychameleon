@@ -20,8 +20,8 @@
 </head>
 <body>
 <div th:replace="index :: topbar"></div>
-<section class="first-section bg-primary text-white text-center">
-    <h3 class="text-uppercase" style="padding-bottom: 3rem">Subscriptions</h3>
+<section class="first-section bg-primary text-white text-center pb-3">
+    <h3 class="text-uppercase">Subscriptions</h3>
 </section>
 <ul class="nav justify-content-center">
     <li class="nav-item">
@@ -42,18 +42,15 @@
         <div th:each="subscription : ${subscriptions}" class="col-md-4">
             <div th:class="${subscription.ageGroup}+' card mb-4 box-shadow'">
                 <a th:href="@{'/subscription/'+${subscription.Id}}" href="..'/subscription/'+${subscription.Id}">
-                    <img class="card-img-top" th:src="${subscription.img1}" style="height: 26rem 0"> </a>
+                    <img class="card-img-top" th:src="${subscription.img1}"> </a>
                 <div class="card-body">
-                    <p class="card-title" th:text="${subscription.ageGroup + ' - ' + subscription.name}"
-                       style="height: 75px; font-size: 22px"></p>
-                    <p class="card-text" th:text="${subscription.description}" style="height: 50px">
-                    </p>
+                    <p class="card-title" th:text="${subscription.ageGroup + ' - ' + subscription.name}"></p>
+                    <p class="card-text" th:text="${subscription.description}"></p>
                     <div class="d-flex justify-content-between">
-                        <p class="subscription_button" style="height: 50px">
+                        <p class="subscription_button">
                             <a type="button" class="btn btn-outline-secondary"
                                th:href="@{'/subscription/'+${subscription.Id}}"
-                               href="..'/subscription/'+${subscription.Id}">Read
-                                more</a>
+                               href="..'/subscription/'+${subscription.Id}">Read more</a>
                         <p class="subscription_button">
                             <a type="button" class="btn btn-outline-primary"
                                th:href="@{/checkout(id=${subscription.id})}" href="/checkout">Subscribe</a>
@@ -71,59 +68,9 @@
 
 <div th:replace="index :: bottombar"></div>
 <div th:replace="index :: scripts"></div>
-<
+
 <script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
 <script th:src="@{/js/subscriptions.js}" src="../static/js/subscriptions.js"></script>
-
-<script>
-    $(document).ready(function()
-{
-  $("#all").click(function(){
-  console.log("ALL SHOULD SHOW");
-    $(".NEWBORN").show();
-    $(".BABY").show();
-    $(".KIDS").show();
-    $("#newborn").removeClass("active");
-    $("#baby").removeClass("active");
-    $("#kids").removeClass("active");
-    $("#all").addClass("active");
-});
-
-  $("#newborn").click(function(){
-    $(".NEWBORN").show();
-    $(".BABY").hide();
-    $(".KIDS").hide();
-    $("#newborn").addClass("active");
-    $("#baby").removeClass("active");
-    $("#kids").removeClass("active");
-    $("#all").removeClass("active");
-  });
-
-  $("#baby").click(function(){
-  $(".NEWBORN").hide();
-    $(".BABY").show();
-    $(".KIDS").hide();
-    $("#newborn").removeClass("active");
-    $("#baby").addClass("active");
-    $("#kids").removeClass("active");
-    $("#all").removeClass("active");
-
-  });
-
-  $("#kids").click(function(){
-    $(".NEWBORN").hide();
-    $(".BABY").hide();
-    $(".KIDS").show();
-    $("#newborn").removeClass("active");
-    $("#baby").removeClass("active");
-    $("#kids").addClass("active");
-    $("#all").removeClass("active");
-
-  });
- });
-
-
-</script>
 
 </body>
 </html>

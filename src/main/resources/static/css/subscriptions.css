@@ -1,30 +1,22 @@
-
 .jumbotron-heading{
     color: white;
 }
 
-.price{
-    font-size: 25px;
-    color: grey;
-    font-weight: bold;
-}
-
 .btn.btn-light{
-    margin: 50px;
-    width: 120px;
-    font-size: 22px;
+    margin: 1.75rem;
+    font-size: 1.375rem;
 }
 
 .filterDiv {
     display: none;
-  }
-  
-  .show {
-    display: block;
-  }
+}
 
-  .card-title{
-      font-size: 23px;
-      color: grey;
-      font-weight: bold;
-  }
+.show {
+    display: block;
+}
+
+.card-title, .price{
+    font-size: 1.375rem;
+    color: grey;
+    font-weight: bold;
+}
