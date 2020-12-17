@@ -34,7 +34,7 @@
         <a type="button" class="btn btn-light" id="kids">Kids</a>
     </li>
     <li class="nav-item">
-        <a type="button" class="btn btn-light active" id="all">View all</a>
+        <a type="button" class="btn btn-light" id="all">View all</a>
     </li>
 </ul>
 <div class="container">
@@ -83,18 +83,30 @@
     $(".NEWBORN").show();
     $(".BABY").show();
     $(".KIDS").show();
+    $("#newborn").removeClass("active");
+    $("#baby").removeClass("active");
+    $("#kids").removeClass("active");
+    $("#all").addClass("active");
 });
 
   $("#newborn").click(function(){
     $(".NEWBORN").show();
     $(".BABY").hide();
     $(".KIDS").hide();
+    $("#newborn").addClass("active");
+    $("#baby").removeClass("active");
+    $("#kids").removeClass("active");
+    $("#all").removeClass("active");
   });
 
   $("#baby").click(function(){
   $(".NEWBORN").hide();
     $(".BABY").show();
     $(".KIDS").hide();
+    $("#newborn").removeClass("active");
+    $("#baby").addClass("active");
+    $("#kids").removeClass("active");
+    $("#all").removeClass("active");
 
   });
 
@@ -102,6 +114,10 @@
     $(".NEWBORN").hide();
     $(".BABY").hide();
     $(".KIDS").show();
+    $("#newborn").removeClass("active");
+    $("#baby").removeClass("active");
+    $("#kids").addClass("active");
+    $("#all").removeClass("active");
 
   });
  });
