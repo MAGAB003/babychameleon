@@ -140,8 +140,7 @@ public class BabyChameleonController {
 
         Customer customer = new Customer();
         if (request.getUserPrincipal() != null) {
-            //customer = customerRepository.findByEmail(request.getUserPrincipal().getName()).get(0);
-            customer = customerRepository.findByEmail("anton@svensson.se").get(0);
+            customer = customerRepository.findByEmail(request.getUserPrincipal().getName()).get(0);
             for (int i = customer.getChildren().size() - 1; i >= 0; i--) {
                 customer.getChildren().remove(i);
             }
@@ -159,7 +158,7 @@ public class BabyChameleonController {
     }
 
     @PostMapping("/checkout")
-    public String checkoutPost(@ModelAttribute Customer customer) {
+    public String checkoutPost(@ModelAttribute Customer customer, HttpSession session) {
         Customer origCustomer = customerRepository.findById(customer.getId()).orElse(null);
         if (origCustomer == null) {
             return "checkout";
@@ -168,6 +167,8 @@ public class BabyChameleonController {
             customer.addChild(origCustomer.getChildren().get(i));
         }
         customerRepository.save(customer);
+
+        session.setAttribute("cart", null);
 
         return "redirect:/confirmation";
     }
