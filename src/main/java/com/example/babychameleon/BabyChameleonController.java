@@ -89,9 +89,6 @@ public class BabyChameleonController {
     }
 
 
-
-
-
     @GetMapping("/mysubscriptions")
     public String mySubscriptions(HttpServletRequest request, HttpSession session, Model model) {
         Customer customer = new Customer();
@@ -146,13 +143,18 @@ public class BabyChameleonController {
         if (request.getUserPrincipal() != null) {
             //customer = customerRepository.findByEmail(request.getUserPrincipal().getName()).get(0);
             customer = customerRepository.findByEmail("anton@svensson.se").get(0);
+            for (int i = customer.getChildren().size() - 1; i >= 0; i--) {
+                customer.getChildren().remove(i);
+            }
         }
-        for (Child child : cart.cartItems) {
-            customer.addChild(child);
+        if (cart != null) {
+            for (Child child : cart.cartItems) {
+                customer.addChild(child);
+            }
         }
         model.addAttribute("customer", customer);
-        model.addAttribute("subscriptionslist", subscriptionRepository.findAll() );
 
+        model.addAttribute("subscriptionslist", subscriptionRepository.findAll());
 
         return "checkout";
     }

@@ -20,61 +20,59 @@
 </head>
 <body>
 <div th:replace="index :: topbar"></div>
-
-<header class="masthead bg-primary text-white text-center">
-    <div class="container d-flex align-items-center flex-column">
-        <!-- Masthead Heading-->
-        <h1 class="masthead-heading text-uppercase mb-0">Subscriptions</h1>
-        <!-- Icon Divider-->
-        <div class="divider-custom divider-light">
-            <div class="divider-custom-line"></div>
-            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-            <div class="divider-custom-line"></div>
-        </div>
-    </div>
-</header>
-<div class="d-flex align-items-center flex-column">
-    <div><br></div>
-    <div id="myBtnContainer">
+<section class="first-section bg-primary text-white text-center">
+    <h3 class="text-uppercase" style="padding-bottom: 3rem">Subscriptions</h3>
+</section>
+<ul class="nav justify-content-center">
+    <li class="nav-item">
         <a type="button" class="btn btn-light" id="newborn">Newborn</a>
+    </li>
+    <li class="nav-item">
         <a type="button" class="btn btn-light" id="baby">Baby</a>
+    </li>
+    <li class="nav-item">
         <a type="button" class="btn btn-light" id="kids">Kids</a>
-        <a type="button" class="btn btn-light active" id="all">View all</a>
-    </div>
-    <div class="container">
-        <div class="card-group">
-            <div th:each="subscription : ${subscriptions}" class="col-md-4">
-                <div th:class="${subscription.ageGroup}+' card mb-4 box-shadow'">
-                    <a th:href="@{'/subscription/'+${subscription.Id}}"  href="..'/subscription/'+${subscription.Id}">
-                        <img class="card-img-top" th:src="${subscription.img1}" style="height: 420px"> </a>
-                    <div class="card-body">
-                        <p class="card-title" th:text="${subscription.ageGroup + ' - ' + subscription.name}" style="height: 75px; font-size: 22px"></p>
-                        <p class="card-text" th:text="${subscription.description}"style="height: 50px">
+    </li>
+    <li class="nav-item">
+        <a type="button" class="btn btn-light" id="all">View all</a>
+    </li>
+</ul>
+<div class="container">
+    <div class="card-group">
+        <div th:each="subscription : ${subscriptions}" class="col-md-4">
+            <div th:class="${subscription.ageGroup}+' card mb-4 box-shadow'">
+                <a th:href="@{'/subscription/'+${subscription.Id}}" href="..'/subscription/'+${subscription.Id}">
+                    <img class="card-img-top" th:src="${subscription.img1}" style="height: 26rem 0"> </a>
+                <div class="card-body">
+                    <p class="card-title" th:text="${subscription.ageGroup + ' - ' + subscription.name}"
+                       style="height: 75px; font-size: 22px"></p>
+                    <p class="card-text" th:text="${subscription.description}" style="height: 50px">
+                    </p>
+                    <div class="d-flex justify-content-between">
+                        <p class="subscription_button" style="height: 50px">
+                            <a type="button" class="btn btn-outline-secondary"
+                               th:href="@{'/subscription/'+${subscription.Id}}"
+                               href="..'/subscription/'+${subscription.Id}">Read
+                                more</a>
+                        <p class="subscription_button">
+                            <a type="button" class="btn btn-outline-primary"
+                               th:href="@{/checkout(id=${subscription.id})}" href="/checkout">Subscribe</a>
                         </p>
-                        <div class="d-flex justify-content-between">
-                            <p class="subscription_button" style="height: 50px">
-                                <a type="button" class="btn btn-outline-secondary"
-                                   th:href="@{'/subscription/'+${subscription.Id}}"
-                                   href="..'/subscription/'+${subscription.Id}">Read
-                                    more</a>
-                            <p class="subscription_button">
-                                <a type="button" class="btn btn-outline-primary"
-                                   th:href="@{/checkout(id=${subscription.id})}" href="/checkout">Subscribe</a>
-                            </p>
-                        </div>
-                        <div class="price" th:text="${subscription.price}+ ' SEK / Month'"></div>
                     </div>
+                    <div class="price" th:text="${subscription.price}+ ' SEK / Month'"></div>
                 </div>
             </div>
-
         </div>
+
     </div>
+</div>
 </div>
 
 
 <div th:replace="index :: bottombar"></div>
 <div th:replace="index :: scripts"></div>
-<<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
+<
+<script th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
 <script th:src="@{/js/subscriptions.js}" src="../static/js/subscriptions.js"></script>
 
 <script>
@@ -85,18 +83,30 @@
     $(".NEWBORN").show();
     $(".BABY").show();
     $(".KIDS").show();
+    $("#newborn").removeClass("active");
+    $("#baby").removeClass("active");
+    $("#kids").removeClass("active");
+    $("#all").addClass("active");
 });
 
   $("#newborn").click(function(){
     $(".NEWBORN").show();
     $(".BABY").hide();
     $(".KIDS").hide();
+    $("#newborn").addClass("active");
+    $("#baby").removeClass("active");
+    $("#kids").removeClass("active");
+    $("#all").removeClass("active");
   });
 
   $("#baby").click(function(){
   $(".NEWBORN").hide();
     $(".BABY").show();
     $(".KIDS").hide();
+    $("#newborn").removeClass("active");
+    $("#baby").addClass("active");
+    $("#kids").removeClass("active");
+    $("#all").removeClass("active");
 
   });
 
@@ -104,9 +114,14 @@
     $(".NEWBORN").hide();
     $(".BABY").hide();
     $(".KIDS").show();
+    $("#newborn").removeClass("active");
+    $("#baby").removeClass("active");
+    $("#kids").addClass("active");
+    $("#all").removeClass("active");
 
   });
  });
+
 
 </script>
 
