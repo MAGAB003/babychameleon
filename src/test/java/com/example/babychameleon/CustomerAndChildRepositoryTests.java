@@ -36,17 +36,15 @@ public class CustomerAndChildRepositoryTests {
         newCustomer.addChild(newChild2);
         newCustomer.addChild(newChild3);
 
-        Optional<Customer> customer = customerRepository.findById(4L);
-        Assert.assertFalse("Customer with id=4 should not exist", customer.isPresent());
-        Optional<Child> child = childRepository.findById(3L);
-        Assert.assertFalse("Child with id=3 should not exist", child.isPresent());
+        long countCustomers = customerRepository.count();
+        long countChildren = childRepository.count();
 
         customerRepository.save(newCustomer);
 
-        customer = customerRepository.findById(4L);
-        Assert.assertEquals("Customer with id=4 should exist", newCustomer.getFirstName(), customer.get().getFirstName());
-        child = childRepository.findById(3L);
-        Assert.assertEquals("Child with id=3 should exist", newChild1.getName(), child.get().getName());
+        Optional<Customer> customer = customerRepository.findById(countCustomers + 1);
+        Assert.assertEquals("New customer should exist", newCustomer.getFirstName(), customer.get().getFirstName());
+        Optional<Child> child = childRepository.findById(countChildren + 1);
+        Assert.assertEquals("New child should exist", newChild1.getName(), child.get().getName());
 
         Assert.assertEquals("Customer should have 3 children", 3, customer.get().getChildren().size());
     }
