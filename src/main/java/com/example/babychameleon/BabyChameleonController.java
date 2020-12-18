@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-
 @Controller
 public class BabyChameleonController {
 
@@ -35,18 +34,15 @@ public class BabyChameleonController {
         return "aboutservice";
     }
 
-
     @GetMapping("/subscriptions")
     public String subscriptions(Model model) {
-        List<Subscription> newSubscription = (List<Subscription>) subscriptionRepository.findAll();
-        model.addAttribute("subscriptions", newSubscription);
+        model.addAttribute("subscriptions", (List<Subscription>) subscriptionRepository.findAll());
         return "subscriptions";
     }
 
     @GetMapping("/subscription/{id}")
     public String getSubscription(Model model, @PathVariable Long id) {
-        Subscription subscription = subscriptionRepository.findById(id).get();
-        model.addAttribute("subscription", subscription);
+        model.addAttribute("subscription", subscriptionRepository.findById(id).get());
         return "subscriptiondetails";
     }
 
@@ -59,7 +55,6 @@ public class BabyChameleonController {
     public String logout() {
         return "index";
     }
-
 
     @GetMapping("/h2test")
     public String h2test(Model model) {
@@ -76,23 +71,18 @@ public class BabyChameleonController {
 
     @GetMapping("/h2testCustomer")
     public String h2testCustomer(Model model) {
-        List<Customer> customers = (List<Customer>) customerRepository.findAll();
-        model.addAttribute("customers", customers);
+        model.addAttribute("customers", (List<Customer>) customerRepository.findAll());
         return "h2test";
     }
-
 
     @GetMapping("/addnewcustomer")
     public String addnewcustomer() {
         return "addNewCustomer";
     }
 
-
     @GetMapping("/mysubscriptions")
     public String mySubscriptions(HttpServletRequest request, HttpSession session, Model model) {
-        Customer customer = new Customer();
-
-        customer = customerRepository.findByEmail(request.getUserPrincipal().getName()).get(0);
+        Customer customer = customerRepository.findByEmail(request.getUserPrincipal().getName()).get(0);
         List<Child> childrenList = customer.getChildren();
         session.setAttribute("childrenList", childrenList);
         session.setAttribute("customer", customer);
@@ -141,9 +131,7 @@ public class BabyChameleonController {
         Customer customer = new Customer();
         if (request.getUserPrincipal() != null) {
             customer = customerRepository.findByEmail(request.getUserPrincipal().getName()).get(0);
-            for (int i = customer.getChildren().size() - 1; i >= 0; i--) {
-                customer.getChildren().remove(i);
-            }
+            customer.getChildren().clear();
         }
         if (cart != null) {
             for (Child child : cart.cartItems) {
