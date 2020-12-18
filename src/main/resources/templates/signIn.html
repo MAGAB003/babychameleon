@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Sign In - Baby Chameleon</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}" href="../static/img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}" href="../static/img/favicon.ico"/>
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -18,35 +18,39 @@
 <body>
 <div th:replace="index :: topbar"></div>
 
-<section class="page-section first-section">
-    <div class="container">
-        <main role="main" class="container">
-
-        <div class="row" style="margin-top:20px">
+<section class="first-section bg-primary text-white text-center pb-3">
+    <h3 class="text-uppercase">Sign In</h3>
+</section>
+<div class="container">
+    <main role="main" class="container">
+        <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-                <span th:if="${#httpServletRequest.remoteUser!=null}"> <br><br><br><br> <h2>Thank you for joining us at Baby Chameleon</h2> <br><br><br><br><br><br><br> </span>
+                <div th:if="${#httpServletRequest.remoteUser!=null}">
+                    <br><br><br><br>
+                    <h2>Thank you for joining us at Baby Chameleon</h2>
+                    <br><br><br><br><br><br><br>
+                </div>
 
-               <span th:if="${#httpServletRequest.remoteUser==null}">
-                   <h2>Please sign in to start a subscription</h2>
-                            <div th:if="${param.error}">
-                                Invalid username and password.
-                            </div>
-                            <form th:action="@{/login}" class="form-horizontal" method="post" accept-charset="UTF-8">
-                                <input class="form-control login" type="text" name="username" placeholder="E-Mail" ><br>
-                                <input class="form-control login" type="password" name="password" placeholder="Password" ><br>
-                               <div class="col-xs-6 col-sm-6 col-md-6">
-                                <input class="btn-lg btn-primary btn-block" type="submit" name="submit" value="Sign in">
-                               </div>
-                            </form>
-                            <div class="py-5 col-xs-6 col-sm-6 col-md-6">
-                                <a href="/addnewcustomer" class="btn btn-mg btn-outline-primary btn-block">Create Account</a>
-                            </div>
-                            </span>
+                <div th:if="${#httpServletRequest.remoteUser==null}">
+                    <h2>Please sign in to start a subscription</h2>
+                    <div th:if="${param.error}">
+                        Invalid username and password.
+                    </div>
+                    <form th:action="@{/login}" class="form-horizontal" method="post" accept-charset="UTF-8">
+                        <input class="form-control login" type="text" name="username" placeholder="E-Mail"><br>
+                        <input class="form-control login" type="password" name="password" placeholder="Password"><br>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <input class="btn-lg btn-primary btn-block" type="submit" name="submit" value="Sign in">
+                        </div>
+                    </form>
+                    <div class="py-5 col-xs-6 col-sm-6 col-md-6">
+                        <a href="/addnewcustomer" class="btn btn-mg btn-outline-primary btn-block">Create Account</a>
+                    </div>
                 </div>
             </div>
-        </main>
-    </div>
-</section>
+        </div>
+    </main>
+</div>
 
 <div th:replace="index :: bottombar"></div>
 <div th:replace="index :: scripts"></div>

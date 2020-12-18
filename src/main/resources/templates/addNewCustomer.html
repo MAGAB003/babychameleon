@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>Create Account - Baby Chameleon</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}" href="../static/img/favicon.ico" />
+    <link rel="icon" type="image/x-icon" th:href="@{/img/favicon.ico}" href="../static/img/favicon.ico"/>
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" crossorigin="anonymous"></script>
     <!-- Google fonts-->
@@ -18,73 +18,73 @@
 <body>
 <div th:replace="index :: topbar"></div>
 
-<!-- Main -->
-<section class="page-section first-section">
-    <div class="container">
-        <main role="main" class="container">
-
-
-
-    <form class="form-signin" action="/addnewcustomer" method="post">
-    <hr class="mb-4">
-
-    <h4 class="mb-3">Create your customer account</h4>
-
-    <div class="row">
-        <div class="col-md-6 mb-3">
-            <label for="firstName">First name</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" name= "firstName" required="">
-            <div class="invalid-feedback"> Valid first name is required. </div>
-        </div>
-        <div class="col-md-6 mb-3">
-            <label for="lastName">Last name</label>
-            <input type="text" class="form-control" id="lastName" name= "lastName" placeholder="" value="" required="">
-            <div class="invalid-feedback"> Valid last name is required. </div>
-        </div>
-    </div>
-
-    <div class="mb-3">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" name= "email" placeholder="you@example.com">
-        <div class="invalid-feedback"> Please enter a valid email address for shipping updates. </div>
-    </div>
-    <div class="mb-3">
-        <label for="streetAddress">Street Address</label>
-        <input type="text" class="form-control" id="streetAddress" name= "streetAddress" placeholder="1234 Main St" required="">
-        <div class="invalid-feedback"> Please enter your shipping address. </div>
-    </div>
-    <div class="mb-3">
-        <label for="postalCode">Postal code</label>
-        <input type="text" class="form-control" name= "postalCode" id="postalCode" placeholder="">
-    </div>
-    <div class="row">
-        <div class="col-md-8 mb-3">
-            <label for="city">City</label>
-            <input type="text" class="form-control" id="city" name= "city" placeholder="" required="">
-            <div class="invalid-feedback"> City required. </div>
-        </div>
-        <div class="col-md-8 mb-3">
-            <label for="country">Country</label>
-            <input type="text" class="form-control" name= "country" id="country" placeholder="" required="">
-            <div class="invalid-feedback"> Country required. </div>
-        </div>
-        <div class="col-md-8 mb-3">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" name= "password" id="password" placeholder="" required="">
-            <div class="invalid-feedback"> Password required. </div>
-        </div>
-    </div>
-
-    <hr class="mb-4">
-    <button class="btn btn-primary btn-lg btn-block" type="submit">Create account</button>
-    </form>
-
-
-
-</main>
-    </div>
+<section class="first-section bg-primary text-white text-center pb-3">
+    <h3 class="text-uppercase">Create Account</h3>
 </section>
+<!-- Main -->
+<div class="container">
+    <main role="main" class="container">
 
+        <form class="form-signin" action="/addnewcustomer" method="post">
+            <h4 class="mb-3">Create your customer account</h4>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="firstName">First name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="" value="" name="firstName"
+                           required="">
+                    <div class="invalid-feedback"> Valid first name is required.</div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="lastName">Last name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" value=""
+                           required="">
+                    <div class="invalid-feedback"> Valid last name is required.</div>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+                <div class="invalid-feedback"> Please enter a valid email address for shipping updates.</div>
+            </div>
+            <div class="mb-3">
+                <label for="streetAddress">Street Address</label>
+                <input type="text" class="form-control" id="streetAddress" name="streetAddress"
+                       placeholder="1234 Main St" required="">
+                <div class="invalid-feedback"> Please enter your shipping address.</div>
+            </div>
+            <div class="mb-3">
+                <label for="postalCode">Postal code</label>
+                <input type="text" class="form-control" name="postalCode" id="postalCode" placeholder="">
+            </div>
+            <div class="row">
+                <div class="col-md-8 mb-3">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" name="city" placeholder="" required="">
+                    <div class="invalid-feedback"> City required.</div>
+                </div>
+                <div class="col-md-8 mb-3">
+                    <label for="country">Country</label>
+                    <input type="text" class="form-control" name="country" id="country" placeholder="" required="">
+                    <div class="invalid-feedback"> Country required.</div>
+                </div>
+                <div class="col-md-8 mb-3">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" placeholder=""
+                           required="">
+                    <div class="invalid-feedback"> Password required.</div>
+                </div>
+            </div>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Create account</button>
+        </form>
+
+    </main>
+</div>
+
+<p>&nbsp;</p>
 <div th:replace="index :: bottombar"></div>
 <div th:replace="index :: scripts"></div>
 </body>

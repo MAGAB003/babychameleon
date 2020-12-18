@@ -14,25 +14,22 @@
           type="text/css"/>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link th:href="@{/css/styles.css}" href="../static/css/styles.css" rel="stylesheet"/>
-
-    <!-- Date picker -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
 </head>
 <body>
 <div th:replace="index :: topbar"></div>
 
-<section class="page-section first-section">
-    <div class="container">
-        <div class="py-5 text-center">
-            <h2>Thank you for placing your Order!</h2>
-            <hr class="mb-4">
-            <a  class="btn btn-primary btn-lg" th:href="@{/mysubscriptions}" >View my Subscriptions</a>
-        </div>
-    </div>
+<section class="first-section bg-primary text-white text-center pb-3">
+    <h3 class="text-uppercase">Subscription Confirmation</h3>
 </section>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Thank you for placing your Order!</h2>
+        <hr class="mb-4">
+        <a class="btn btn-primary btn-lg" th:href="@{/mysubscriptions}">View my Subscriptions</a>
+    </div>
+</div>
 
+<p>&nbsp;</p>
 <div th:replace="index :: bottombar"></div>
 <div th:replace="index :: scripts"></div>
 </body>

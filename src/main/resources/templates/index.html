@@ -37,31 +37,30 @@
                                                          href="/subscriptions">Subscriptions</a></li>
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
                                                          href="/aboutservice">How does it work</a></li>
-                    <span th:if="${#httpServletRequest.remoteUser==null}">
-                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
-                                                         href="/login">Sign in</a></li></span>
 
-                    <li th:if="${#httpServletRequest.remoteUser!=null}"class="nav-item mx-0 mx-lg-1 dropdown"><a class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle"
-                                                                  id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+                    <li th:if="${#httpServletRequest.remoteUser==null}" class="nav-item mx-0 mx-lg-1"><a
+                            class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                            href="/login">Sign in</a></li>
 
-                        <span th:if="${#httpServletRequest.remoteUser!=null}"  class="fa fa-user"></span></a>
+                    <li th:if="${#httpServletRequest.remoteUser!=null}" class="nav-item mx-0 mx-lg-1 dropdown"><a
+                            class="nav-link py-3 px-0 px-lg-3 rounded dropdown-toggle"
+                            id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="false"
+                            aria-expanded="false">
 
+                        <span class="fa fa-user"></span></a>
 
-
-                         <span th:if="${#httpServletRequest.remoteUser!=null}">
-                             <div class="dropdown-menu dropdown-menu-right p-3" >
+                        <div class="dropdown-menu dropdown-menu-right p-3">
                             <a class="form-horizontal" style="width:300px"
-                               href="/mysubscriptions" text > My subscriptions <br></a>
-                             <br>
+                               href="/mysubscriptions"> My subscriptions <br></a>
+                            <br>
                             <form th:action="@{/logout}" class="form-horizontal" method="post" accept-charset="UTF-8">
-                            <input class="btn btn-primary" type="submit" value="Sign out" style="width:300px"/>
-                        </form>
+                                <input class="btn btn-primary" type="submit" value="Sign out" style="width:300px"/>
+                            </form>
                         </div>
-                        </span>
-
+                    </li>
                 </ul>
             </div>
-            </div>
+        </div>
     </nav>
 </div>
 
